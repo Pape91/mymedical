@@ -1,0 +1,12 @@
+{
+    "name": "papemb/mymedical",
+    "type": "no",
+    "autoload": {
+        "psr-4": {
+            "Mymedical\\": "./app"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
