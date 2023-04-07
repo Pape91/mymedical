@@ -1,6 +1,28 @@
+  /* oswald-regular - latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/oswald-v49-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+        url('../fonts/oswald-v49-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/oswald-v49-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/oswald-v49-latin-regular.woff') format('woff'), /* Modern Browsers */
+        url('../fonts/oswald-v49-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/oswald-v49-latin-regular.svg#Oswald') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'poppinsregular';
+  src: url('../fonts/poppins-regular-webfont.woff2') format('woff2'),
+       url('../fonts/poppins-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
   /* variables */
-  :root{
-    --fond-bleu:#007bff;
+:root{
+    --fond-bleu: #107ACA;
+    --fond-blanc:#fff;
     --texte-blanc:#FFF;
     --texte-noir:#000;
 }
@@ -10,44 +32,79 @@
     margin:0;
     padding:0;
 }
+body{
+  font-family: 'poppinsregular';
+  font-size: 18px;
+}
 a{
     text-decoration: none;
 }
 ul{
     list-style-type: none;
 }
+#corps{
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh; */
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* background: #F5F7F9 0% 0% no-repeat padding-box;
+  box-shadow: 0px 6px 6px #00000040;
+  border-radius: 6px;
+  opacity: 1; */
+}
 
 .container{
     max-width: 1200px;
-    width:100%;
-    margin:0 auto;
-    display: flex;
-    padding-top: 40px;
-    
+    width: 100%;
+    margin: 15px auto 0;
+    text-align: center;
+}
+.container .bloc{
+  margin-top: 30px;
+  display: flex;
 }
 
-.titre h1, h2, p, a{
-    color: #007bff;
+
+div.image1 img{
+  /* height: 300px; */
 }
-.titre{
-  padding: 10px;
+
+#tete {
+  display: flex;
+  justify-content: space-between;
+  
 }
-.titre h1{
+#tete h1{
+  font-family: 'Oswald';
+  color: var(--fond-bleu);
   font-size: 3rem;
   text-transform: uppercase;
   text-decoration: underline;
 }
-.titre h2{
+
+#sous_titre h2{
+  font-family: 'Oswald';
+  color: var(--fond-bleu);
   font-size: 2rem;
+  text-align: left;
 }
 .description{
-  padding-top: 50px;
-  width: 65%;
-  font-size: 1.5rem;
+  color: var(--fond-bleu);
+  font-size: 1.4rem;
+  text-align: left;
+  margin: 10px 0;
+}
+
+.apropos{
+  display: contents;
 }
 .apropos a{
-  padding: 5px;
-  border: solid 2px #007bff;
+  padding: 7px 9px 7px;
+  border: solid 2px var(--fond-bleu);
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -55,13 +112,20 @@ ul{
   -o-border-radius: 5px;
 }
 .apropos a:hover{
-  background-color: #007bff;
+  background-color: var(--fond-bleu);
   color: #FFF;
 }
 
-main{
-  display: flex;
-  /* padding-top: 200px; */
+.formulaire{
+  width: 50%;
+  margin: auto;
+  border-radius: 6px;
+  /* border: solid #007bff; */
+  /* background: #006AAB 0% 0% no-repeat padding-box; */
+  background: var(--fond-bleu) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 6px 6px #00000040;
+  border-radius: 6px;
+  opacity: 1;
 }
 
 form {
@@ -70,10 +134,20 @@ form {
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+
+  }
+  .form-inscription h3{
+    color: var(--fond-bleu);
+    font-size: 1.5rem;
   }
   label, h3{
+    color: var(--texte-blanc);
     padding: 10px;
   }
+  input[type="text"],
+  input[type="date"],
+  input[type="genre"],
+  input[type="role"],
   input[type="email"],
   input[type="password"] {
     width: 300px;
@@ -86,17 +160,144 @@ form {
     -o-border-radius: 5px;
 }
 
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+button {
+  padding: 10px 20px;
+  background-color: var(--fond-blanc);
+  color: var(--texte-blanc);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--fond-bleu);
+}
+
+/* formulaire d'inscription */
+/* page patient */
+
+.information {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+.declaration{
+
+
+}
+
+.profil h4, .historique h4, .declaration h4 {
+  font-size: 24px;
+  color: #413f3f;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.profil p, .historique p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="text"],
+input[type="date"], input[type="genre"],
+input[type="role"], input[type="email"],
+input[type="password"] {
+  /*width: 80%;*/
+  /* border: 2px solid #000000; */
+  padding: 10px;
+  /* border-radius: 10px; */
+  font-size: 16px;
+  margin-bottom: 10px;
+ 
+}
+input[type="date"]{
+  text-align: center;
+}
+.radio{
+  display: inline-block;
+}
+select{
+  text-align: center;
+  margin: 5px;
+  font-size: 1rem;
+}
+#libelle_role{
+  color: var(--texte-blanc);
+  margin: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  background-color: var(--fond-blanc);
+  color: var(--fond-bleu);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+button[type="submit"]:hover{
+  color: #fff;
+  /*background-color: var(--fond-bleu);
+  */background: linear-gradient(45deg,#069792,#17c2bb);
+  transition:none; 
+}
+/* Vue page patient */
+.corps_patient{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.donnees p{
+  margin: 30px;
+}
+.declaration{
+  display: flex;
+  justify-content: space-around;
+  margin: 60px;
+}
+
+.historique p{
+  margin: 30px;
+}
+
+
+@media screen and (max-width: 870px) {
+
+  .formulaire {
+    width: 100%;
   }
 
-  button:hover {
-    background-color: #0069d9;
+  #corps{
+    width: 100%;
+    padding: 0;
+    margin-top: 17%;
   }
+
+  .titre h1 {
+    font-size: 1.5rem;
+  }
+
+  .titre h2 {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  div.image1{
+   display: none;
+  }
+  #contenu {
+    width: 90%;
+  }
+  
+}
+
+  
 
 

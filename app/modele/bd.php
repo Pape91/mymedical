@@ -7,6 +7,7 @@ use Dotenv\Dotenv;
 // the 3 following "use" are required to access classes and objects outside the namespace
 use PDO;
 use PDOException;
+use Exception;
 
 abstract class DbConnector
 {

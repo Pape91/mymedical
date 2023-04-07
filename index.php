@@ -6,37 +6,26 @@ require __DIR__ . '/vendor/autoload.php';
 use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+// require dirname(__FILE__) . "/app/controleur/config.php";
+// var_dump(dirname(__FILE__));
+//require dirname(__FILE__)  . "/app/controleur/routage.php";
+require "app/controleur/config.php";
+require "app/controleur/routage.php";
+require "app/modele/authentification.php";
 
-/**
-*	Controleur principal  
-*/
-
-// Vérification de la soumission du formulaire
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données du formulaire
-    $dbname = $_POST['dbname'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+//$action="";
+if (isset($_GET["action"])) {
+  $action = $_GET["action"];
+  $fichier = redirigeVers($action);
   
-    // Vérification des informations de connexion
-    if ($dbname === $_ENV['DB_NAME'] && $username === $_ENV['DB_USERNAME'] && $password === $_ENV['DB_PASSWORD']) {
-      // Redirection vers une page de connexion réussie
-      require ('app/vues/home.php');
-    //   echo  ("connexion réussie");
-      exit();
-    } else {
-      // Redirection vers une page de connexion échouée
-      
-      echo  ("connexion échouée");
+  require dirname(__FILE__) . "/app/controleur/" . $fichier;
+}
+  else{
 
-      exit();
-    }
-  } else {
-    // Affichage de la vue de connexion
-    require ('app/vues/login.php');
+    require ('app/vues/entete.php');
+    require ('app/vues/home.php');
   }
-
-// require ('app/vues/login.php');
+//Ajoute un controleur secondaire ($fichier) en fonction du metier ($action) :
 
 
 ?>
