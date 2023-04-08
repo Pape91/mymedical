@@ -55,11 +55,13 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
             
             <label for="role">Rôle</label>
             <select id="role" name="role" required>
-              <option value="patient" selected>Patient</option>
-              <option value="medecin">Medecin ou admin</option>
+              <option value="patient"selected>Patient</option>
+              <option value="medecin">Medecin</option>
+              <option value="admin">Admin</option>
             </select>
-              <span id="libelle_role">numéro sécurité sociale</span>
-              <input type="text" id="numero_role" name="role" required>
+              <label id="libelle_role">numéro sécurité sociale</label>
+              <input type="text" id="numero_role" name="num" required>
+              <!-- <input type="text" id="numero_role" name="numRole" required> -->
             <button type="submit">S'inscrire</button>
           </form>
     </main>

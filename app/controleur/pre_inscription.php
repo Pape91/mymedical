@@ -60,7 +60,7 @@ if (isset($_POST["email"]) && isset($_POST["mot_de_passe"]) && isset($_POST["rol
         } else {
             // appel du script de vue qui permet de gerer l'affichage des donnees
             $titre = "Inscription pb";
-            include RACINE . "/vues/entete.php";
+            // include RACINE . "/vues/entete.php";
             include RACINE . "/vues/vueInscription.php";
             
         }

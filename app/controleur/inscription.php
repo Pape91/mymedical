@@ -11,20 +11,15 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 
 include_once __DIR__ . "/config.php";
 include_once RACINE . "../modele/bd.utilisateur.inc.php";
+include_once RACINE . "../modele/bd.patient.php";
+include_once RACINE . "../modele/bd.medecin.php";
+include_once RACINE . "../modele/bd.admin.php";
 
 
 $inscrit = false;
 $msg="My Medical";
 
-// recuperation des donnees GET, POST, et SESSION (vérification à confier au front)
 
-// if (isset($_POST["email"]) && isset($_POST["mot_de_passe"]) && isset($_POST["role"]) && isset($_POST["genre"])
-//     && isset($_POST["prenom"]) && isset($_POST["nom"]) && isset($_POST["date_de_naissance"]) && (isset($_POST["numSecu"])
-//     || isset($_POST["numPro"]))) {
-
-    // if ($_POST["email"] != "" && $_POST["mot_de_passe"] != "" && $_POST["role"] != "" && $_POST["genre"] != "" 
-    //     && $_POST["prenom"] != "" && $_POST["nom"] != "" && $_POST["date_de_naissance"] != "" && $_POST["numSecu"] != "" 
-    //     || $_POST["numPro"] != "") {
         if (true) {
             
        
@@ -35,14 +30,41 @@ $msg="My Medical";
             $prenom = $_POST["prenom"];
             $nom = $_POST["nom"];
             $dateN = $_POST["date_de_naissance"];
-            // $numSecu = $_POST["numSecu"];
+            $num = $_POST["num"];
             // $numPro = $_POST["numPro"];
 
 
         // enregistrement des donnees
+
         $user = new \Mymedical\modele\Utilisateur();
 
-        $ret = $user->addUtilisateur($mailU, $mdpU, $role, $prenom, $nom, $genre, $dateN, 0, 0);
+
+        
+        $ret = $user->addUtilisateur($mailU, $mdpU, $role, $prenom, $nom, $genre, $dateN);
+        $data_user=$user->getUtilisateurByMailU($mailU);
+
+        if($role=="patient"){
+            // créer une instance de la classe Patient
+            $patient = new \Mymedical\modele\Patient();
+            $patient->addPatient($data_user["Id_utilisateur"], $num);
+        }
+        else  if($role=="medecin"){
+
+            $medecin = new \Mymedical\modele\Medecin();
+            $medecin->addMedecin($data_user["Id_utilisateur"], $num);
+        }else  if($role=="admin"){
+
+            //créer une instance de la classe Admin
+            $admin = new \Mymedical\modele\Admin();
+            $admin->addAdmin($data_user["Id_utilisateur"], $num);
+        }
+        // echo($ret);
+
+        // ajouter un nouveau médecin
+        // $medecin->addMedecin('numPro', 'Id_utilisateur');
+
+        // // ajouter un nouvel administrateur
+        // $admin->addAdmin('numPro', 'Id_utilisateur');
         if ($ret) {
             $inscrit = true;
         } else {
@@ -58,15 +80,8 @@ $msg="My Medical";
         if ($inscrit) {
             // appel du script de vue qui permet de gerer l'affichage des donnees
             $titre = "Inscription confirmée";
-            include RACINE . "/vues/entete.php";
             include RACINE . "/vues/vuePatient.php";
             
         } 
-        // else {
-        //     // appel du script de vue qui permet de gerer l'affichage des donnees
-        //     $titre = "Inscription pb";
-        //     include RACINE . "/vues/entete.php";
-        //     include RACINE . "/vues/vueInscription.php";
-            
-        // }
+     
 ?>

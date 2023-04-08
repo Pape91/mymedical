@@ -11,15 +11,23 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     <div class="bloc">
             <div class="image1"><img src="static/images/Capt.JPG" alt=""></div>
             <div class="formulaire">
+            <span>
+                <?php
+                    if(isset($formulaireOk)){
+                        if(!$formulaireOk)
+                            echo("Problème de connexion");
+                    }
+                 ?>
+            </span>
             <h3>Vous n'êtes pas encore inscrit?</h3>
             <a href="./?action=pre_inscription">créer un espace utilisateur</a>
-                <form action="./?action=inscription" method="POST">
+                <form action="./?action=connexion" method="POST">
                     
                     <label for="email" >E-mail :</label>
                     <input type="email" id="email" name="email">
                     <label for="password">Mot de passe :</label>
                     <input type="password" id="password" name="password">
-                    <button type="submit"> <a href=".?action=connexion">Connexion</a></button>
+                    <button type="submit">Connexion</button>
                     <label for="text">Mot de passe oublié?</label>
                 </form>
             </div> 

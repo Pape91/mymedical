@@ -1,71 +1,75 @@
 <?php
 
-include_once "bd.php";
 
-function login($email, $mdpU) {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+namespace Mymedical\modele;
 
-    $util = getUtilisateurByMailU($mailU);
-    $mdpBD = $util["mdpU"];
+// include_once "bd.php";
+include_once RACINE . "../modele/bd.utilisateur.inc.php";
+require_once RACINE . "../modele/authentification.php";
 
-    if (trim($mdpBD) == trim(crypt($mdpU, $mdpBD))) {
-        // le mot de passe est celui de l'utilisateur dans la base de donnees
-        $_SESSION["email"] = $email;
-        $_SESSION["mdpU"] = $mdpBD;
-    }
-}
+use \mymedical\modele;
 
-function logout() {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    unset($_SESSION["email"]);
-    unset($_SESSION["mot_de_passe"]);
-}
 
-function getMailULoggedOn(){
-    if (isLoggedOn()){
-        $ret = $_SESSION["email"];
-    }
-    else {
-        $ret = null;
-    }
-    return $ret;
-        
-}
+use PDO;
 
-function isLoggedOn() {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    $ret = false;
+// Classe Admin
 
-    if (isset($_SESSION["email"])) {
-        $util = getUtilisateurByMailU($_SESSION["email"]);
-        if ($util["email"] == $_SESSION["email"] && $util["mot_de_passe"] == $_SESSION["mot_de_passe"]
-        ) {
-            $ret = true;
+class Connexion extends DbConnector {
+
+        function login($email, $mdpU) {
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+
+            $user = new \Mymedical\modele\Utilisateur();
+            $util = $user->getUtilisateurByMailU($email);
+            if(!$util)
+                return false;
+            else $mdpBD = $util["mot_de_passe"];
+
+            if (trim($mdpBD) == trim(crypt($mdpU, $mdpBD))) {
+                // le mot de passe est celui de l'utilisateur dans la base de donnees
+                $_SESSION["email"] = $email;
+                $_SESSION["mot_de_passe"] = $mdpBD;
+            }
+            else return false;
+        }
+
+        function logout() {
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            unset($_SESSION["email"]);
+            unset($_SESSION["mot_de_passe"]);
+        }
+
+        function getMailULoggedOn(){
+            $con = new \Mymedical\modele\Connexion();
+            if ( $con->isLoggedOn()){
+                $ret = $_SESSION["email"];
+            }
+            else {
+                $ret = null;
+            }
+            return $ret;
+                
+        }
+
+        function isLoggedOn() {
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            $ret = false;
+
+            if (isset($_SESSION["email"])) {
+                $user = new \Mymedical\modele\Utilisateur();
+                $util = $user->getUtilisateurByMailU($_SESSION["email"]);
+                if ($util["email"] == $_SESSION["email"] && $util["mot_de_passe"] == $_SESSION["mot_de_passe"]
+                ) {
+                    $ret = true;
+                }
+            }
+            return $ret;
         }
     }
-    return $ret;
-}
-
-if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-    // prog principal de test
-    header('Content-Type:text/plain');
-
-
-    // test de connexion
-    login("test@kercode.dev", "kercode");
-    if (isLoggedOn()) {
-        echo "logged";
-    } else {
-        echo "not logged";
-    }
-
-    // deconnexion
-    logout();
-}
 ?>

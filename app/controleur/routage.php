@@ -12,6 +12,7 @@ function redirigeVers($action="defaut") {
     $lesActions["inscription"] = "inscription.php";
     $lesActions["pre_inscription"] = "pre_inscription.php";
     $lesActions["connexion"] = "connexion.php";
+    $lesActions["patient"] = "patient.php";
 
 
 
