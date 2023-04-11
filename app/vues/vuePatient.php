@@ -22,7 +22,7 @@
         </div>
     <div class="declaration">
         <h4>Déclarer mes symptômes</h4>
-        <button type="submit">Déclarer</button>
+        <a href=".?action=declaration">Déclarer</a>
     </div>  
     </main>
 </body>

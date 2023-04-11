@@ -43,17 +43,35 @@ else
 $aut = new \Mymedical\modele\Connexion();
 $utilisateur = new \Mymedical\modele\Utilisateur();
 $aut->login($email,$mdpU);
-if($formulaireOk){
-    $user = $utilisateur->getUtilisateurByMailU($email);
 
-    if(!$user)
+$user = $utilisateur->getUtilisateurByMailU($email);
+if($formulaireOk && !$user){
         $formulaireOk=false;
 }
 
 if ($formulaireOk && $aut->isLoggedOn()){ // si l'utilisateur est connecté on redirige vers le controleur monProfil
-    include RACINE . "../vues/vuePatient.php";
-    header("Location: http://localhost/mymedical/?action=patient");
-    exit();
+
+   
+    $role = $user["role"];
+    if($role=="patient"){
+
+        include RACINE . "../vues/vuePatient.php";
+        header("Location: http://localhost/mymedical/?action=patient");
+        exit();
+    }
+    else if($role=="admin"){
+
+        include RACINE . "../vues/vueAdmin.php";
+        header("Location: http://localhost/mymedical/?action=ajoutSymptome");
+        exit();
+    } else if($role=="medecin"){
+
+        include RACINE . "../vues/vueMedecin.php";
+        header("Location: http://localhost/mymedical/?action=medecin");
+        exit();
+    }else{
+        echo  $role;
+    }
 }
 else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
     // appel du script de vue 

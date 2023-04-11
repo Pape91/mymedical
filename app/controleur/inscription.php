@@ -20,7 +20,7 @@ $inscrit = false;
 $msg="My Medical";
 
 
-        if (true) {
+        if (isset($_POST['email'])) {
             
        
             $mailU = $_POST["email"];
@@ -34,54 +34,71 @@ $msg="My Medical";
             // $numPro = $_POST["numPro"];
 
 
-        // enregistrement des donnees
+            // enregistrement des donnees
 
-        $user = new \Mymedical\modele\Utilisateur();
+            $user = new \Mymedical\modele\Utilisateur();
 
 
-        
-        $ret = $user->addUtilisateur($mailU, $mdpU, $role, $prenom, $nom, $genre, $dateN);
-        $data_user=$user->getUtilisateurByMailU($mailU);
+            $data_user=$user->getUtilisateurByMailU($mailU);
 
-        if($role=="patient"){
-            // créer une instance de la classe Patient
-            $patient = new \Mymedical\modele\Patient();
-            $patient->addPatient($data_user["Id_utilisateur"], $num);
-        }
-        else  if($role=="medecin"){
+            if(!$data_user){
 
-            $medecin = new \Mymedical\modele\Medecin();
-            $medecin->addMedecin($data_user["Id_utilisateur"], $num);
-        }else  if($role=="admin"){
+                $ret = $user->addUtilisateur($mailU, $mdpU, $role, $prenom, $nom, $genre, $dateN);
+                $data_user=$user->getUtilisateurByMailU($mailU);
+                $message = "";
+    
+                if($role=="patient"){
+                    // créer une instance de la classe Patient
+                    $patient = new \Mymedical\modele\Patient();
+                    $patient->addPatient($data_user["Id_utilisateur"], $num);
+                }
+                else  if($role=="medecin"){
+    
+                    $medecin = new \Mymedical\modele\Medecin();
+                    $medecin->addMedecin($data_user["Id_utilisateur"], $num);
+                }else  if($role=="admin"){
+    
+                    //créer une instance de la classe Admin
+                    $admin = new \Mymedical\modele\Admin();
+                    $admin->addAdmin($data_user["Id_utilisateur"], $num);
+                }
+                // echo($ret);
+    
+                // ajouter un nouveau médecin
+                // $medecin->addMedecin('numPro', 'Id_utilisateur');
+    
+                // // ajouter un nouvel administrateur
+                // $admin->addAdmin('numPro', 'Id_utilisateur');
+                if ($ret) {
+                    $inscrit = true;
+                } else {
+                    $msg = "l'utilisateur n'a pas été enregistré.";
+                }
+            }else{
 
-            //créer une instance de la classe Admin
-            $admin = new \Mymedical\modele\Admin();
-            $admin->addAdmin($data_user["Id_utilisateur"], $num);
-        }
-        // echo($ret);
-
-        // ajouter un nouveau médecin
-        // $medecin->addMedecin('numPro', 'Id_utilisateur');
-
-        // // ajouter un nouvel administrateur
-        // $admin->addAdmin('numPro', 'Id_utilisateur');
-        if ($ret) {
-            $inscrit = true;
-        } else {
-            $msg = "l'utilisateur n'a pas été enregistré.";
-        }
-        }
-        else {
-            $msg="Renseigner tous les champs...";    
+                $message="Vous êtes déjà inscrit !";
+                require ('app/vues/entete.php');
+                require ('app/vues/home.php');
             }
+   
+    }
+    else {
+        $msg="Renseigner tous les champs...";    
+        }
 // }
         // var_dump($inscrit);
 
-        if ($inscrit) {
-            // appel du script de vue qui permet de gerer l'affichage des donnees
-            $titre = "Inscription confirmée";
-            include RACINE . "/vues/vuePatient.php";
-            
-        } 
+    if ($inscrit) {
+        
+        $message="Vous êtes inscrit avec succès";
+        // appel du script de vue qui permet de gerer l'affichage des donnees
+        $titre = "Inscription confirmée";
+        //
+        /*header("Location: http://localhost/mymedical");
+        exit();*/
+
+        require ('app/vues/entete.php');
+        require ('app/vues/home.php');
+    }
      
 ?>

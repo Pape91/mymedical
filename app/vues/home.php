@@ -17,6 +17,9 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
                         if(!$formulaireOk)
                             echo("Problème de connexion");
                     }
+                    else if(isset($message)){
+                        echo($message);
+                    }
                  ?>
             </span>
             <h3>Vous n'êtes pas encore inscrit?</h3>
