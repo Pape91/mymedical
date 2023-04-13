@@ -20,16 +20,18 @@
 
         $objSymptome = new \Mymedical\modele\Symptome();
 
-        $res = $objSymptome->getSymptomeByNom($symptome);
+        $res = $objSymptome->getSymptomeByName($symptome);
         // echo $res;
         if(!$res){
-
+            
             $objSymptome->addSymptome($symptome);
 
             $message="Le symptôme ".$symptome. " a été bien ajouté !";
 
         }else{
+           
             $message="Le symptôme ".$symptome. " existe déjà!";
+
         }
     }
 

@@ -25,15 +25,17 @@ class Symptome extends DbConnector {
         return $resultat;
     }
 
-    public function getSymptomeByNom($nom_symptome) {
+    public function getSymptomeByName($nom_symptome) {
         $resultat;
         try {
             $nom_symptome = strtolower($nom_symptome);
             $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT 1 from symptomes_type WHERE nom_symptome=:nom_symptome");
             $req->bindParam(':nom_symptome', $nom_symptome);
-            
-            $resultat =$req->execute();
+
+            $req->execute();
+            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+
         } catch (PDOException $e) {
             die( "Erreur !: " . $e->getMessage() );
         }

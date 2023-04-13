@@ -23,8 +23,10 @@
     </div>
 
     <div id="autre_symptome">
+            <p>Autes Symptomes</p>
             <textarea id="texte_autre">
 
             </textarea>
     </div>
+    <button type="submit">Envoyer</button>
 </form>

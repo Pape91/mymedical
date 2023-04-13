@@ -13,7 +13,7 @@
         <h1>My medical</h1>
       </div>
     </header> -->
-    <?php
+<?php
 
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
   // Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php

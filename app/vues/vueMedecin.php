@@ -1,12 +1,11 @@
-
-    <?php require ('entete.php'); ?>
+<?php require ('entete.php'); ?>
     <link rel="stylesheet" href="../../static/css/style.css">
     <main id="contenu" class="container">
         <div class="corps_patient">
             <div class="donnees">
                 <h2> Informations personnelles </h2>
-                <p> Prénom </p>
-                <p> Nom de famille :</p>
+                <p> Prénom <?php echo($user["prenom"]) ?></p>
+                <p> Nom de famille : <?php echo($user["nom"]) ?></p>
                 <p> Adresse mail </p>
                 <p> Mot de passe</p>
                 <p> Numéro de sécurité sociale</p>
@@ -20,13 +19,10 @@
                 <p> Numéro de sécurité sociale <span>Numéro sécurité sociale</span></p>
             </div>
         </div>
-    <div class="declaration">
+    <!-- <div class="declaration">
         <h4>Déclarer mes symptômes</h4>
         <a href=".?action=declaration">Déclarer</a>
-    </div>  
+    </div>   -->
     </main>
 </body>
 </html>
-<!-- <?php echo($user["nom"]) ;
-
-echo($user["prenom"]) ;?> -->
