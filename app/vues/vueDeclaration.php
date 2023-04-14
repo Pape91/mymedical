@@ -1,11 +1,12 @@
 
-
-<h1>Déclaration de symptômes</h1>
+<div class="titre_declaration">
+    <h1>Déclaration de symptômes</h1>
+</div>
 
 <form>
-    <div id="symtomes">
+    <div id="symptomes">
         <?php
-            if( count($listSymptomes) === 0 ) echo "<span>Aucun restaurant trouvé.</span>";
+            if( count($listSymptomes) === 0 ) echo "<span></span>";
 
             for ($i = 0; $i < count(($listSymptomes)); $i++) { ?>
 
@@ -13,8 +14,8 @@
                 <?php $res = $listSymptomes[$i];?>
                 <span>
                     <?php echo $res["nom_symptome"]?>: 
-                    Oui <input type="radio" name="yes_no" value="oui" required>
-                    Non <input type="radio" value="oui" name="yes_no" required>
+                    Oui <input type="radio" name="yes" value="oui" required>
+                    Non <input type="radio" value="oui" name="no" required>
                 </span>
 
                 </div>
@@ -23,7 +24,7 @@
     </div>
 
     <div id="autre_symptome">
-            <p>Autes Symptomes</p>
+            <h4>Autes Symptomes</h4>
             <textarea id="texte_autre">
 
             </textarea>

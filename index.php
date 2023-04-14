@@ -22,8 +22,8 @@ if (isset($_GET["action"])) {
 }
   else{
 
-    require ('app/vues/entete.php');
-    require ('app/vues/home.php');
+    require ('app/vues/vueEntete.php');
+    require ('app/vues/vueHome.php');
   }
 //Ajoute un controleur secondaire ($fichier) en fonction du metier ($action) :
 

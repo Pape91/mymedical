@@ -13,6 +13,6 @@
     $objSymptome = new \Mymedical\modele\Symptome();
     $listSymptomes = $objSymptome->getSymptomes();
 
-    require ('app/vues/entete.php');
+    require ('app/vues/vueEntete.php');
     require ('app/vues/vueDeclaration.php'); 
 ?>

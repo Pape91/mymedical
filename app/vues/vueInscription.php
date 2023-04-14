@@ -21,7 +21,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 }
 
 ?>
-    <?php require ('entete.php'); ?>
+    <?php require ('vueEntete.php'); ?>
     
     <main id="contenu" class="container">
       <link rel="stylesheet" href="../../static/css/style.css">

@@ -1,5 +1,5 @@
 
-    <?php require ('entete.php'); ?>
+    <?php require ('vueEntete.php'); ?>
     <link rel="stylesheet" href="../../static/css/style.css">
     <main id="contenu" class="container">
         <div class="corps_patient">
@@ -27,6 +27,8 @@
     </main>
 </body>
 </html>
-<!-- <?php echo($user["nom"]) ;
+<?php //echo($user["nom"]) ;
 
-echo($user["prenom"]) ;?> -->
+//echo($user["prenom"]) ;?> 
+    <?php require ('vueFooter.php'); ?>
+

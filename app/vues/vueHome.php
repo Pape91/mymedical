@@ -34,7 +34,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
                     <label for="text">Mot de passe oublié?</label>
                 </form>
             </div> 
-        </main>
     </div>
-</body>
-</html>
+</main>
+<?php //require ('vueFooter.php'); ?>
+

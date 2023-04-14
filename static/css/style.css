@@ -98,7 +98,7 @@ ul{
 
 .apropos a{
   padding: 7px 9px 7px;
-  border: solid 2px var(--fond-bleu);
+  /* border: solid 2px var(--fond-bleu); */
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -163,9 +163,9 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+/* button:hover {
   background-color: var(--fond-bleu);
-}
+} */
 
 /* formulaire d'inscription */
 /* page patient */
@@ -254,7 +254,7 @@ button[type="submit"]:hover{
 
 a {
   display: inline-block;
-  background-color: #007bff;
+  background-color: var(--fond-bleu);
   color: #fff;
   padding: 10px 20px;
   border-radius: 4px;
@@ -264,8 +264,114 @@ a {
 }
 
 a:hover {
-  background-color: #0062cc;
+  color: #fff;
+  background: linear-gradient(45deg,#069792,#17c2bb);
+  transition:none; 
 }
+
+/* =========================vueDeclaration======================== */
+/* .titre_declaration h1{
+  text-align: center;
+  margin: 10px;
+}
+#autre_symptome{
+  margin: 10px;
+}
+#texte_autre{
+
+} */
+/* Style pour la div contenant le titre */
+.titre_declaration {
+  text-align: center;
+  /* margin-bottom: 20px; */
+  margin-top: 10px;
+}
+
+
+/* Style pour les spans contenant le nom du symptôme et les options de choix */
+#symptomes span {
+  display: inline-block;
+  /* width: 200px; */
+  font-size: 1.2rem;
+  /* font-weight: bold; */
+}
+
+/* Style pour les div contenant les symptômes individuels */
+#symptomes div {
+  margin-bottom: 10px;
+}
+
+/* Style pour les labels des boutons radio */
+
+#symptomes label {
+  font-size: 16px;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+/* Style pour les boutons radio */
+#symptomes input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Style pour les textarea contenant les autres symptômes */
+#autre_symptome textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+/* Style pour le bouton d'envoi */
+button[type="submit"] {
+  margin: 10px;
+  background-color: var(--fond-bleu);
+  color: #fff;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* =========================Accordéon======================== */
+.accordion {
+  margin-top: 20px;
+  border: 1px solid var(--fond-bleu);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.accordion-item {
+  border-top: 1px solid var(--fond-bleu);
+}
+
+.accordion-header {
+  /* background-color: #eee; */
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  position: relative;
+  user-select: none;
+}
+
+.accordion-header.active {
+  background-color: var(--fond-bleu);
+  color: var(--texte-blanc);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion-item:last-child .accordion-content {
+  border-bottom: 0;
+}
+
 
 
 

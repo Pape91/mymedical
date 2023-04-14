@@ -76,8 +76,8 @@ if ($formulaireOk && $aut->isLoggedOn()){ // si l'utilisateur est connecté on r
 else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
     // appel du script de vue 
     $titre = "authentification";
-    include RACINE . "../vues/entete.php";
-    include RACINE . "../vues/home.php";
+    include RACINE . "../vues/vueEntete.php";
+    include RACINE . "../vues/vueHome.php";
     // include RACINE . "/vue/pied.html.php";
 }
 
