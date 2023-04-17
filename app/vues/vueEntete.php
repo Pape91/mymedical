@@ -5,28 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./static/css/style.css">
-
-    <?php 
-            // function isLoggedOn() {
-            //     if (!isset($_SESSION)) {
-            //         session_start();
-            //     }
-            //     $ret = false;
-    
-            //     if (isset($_SESSION["email"])) {
-            //         $user = new \Mymedical\modele\Utilisateur();
-            //         $util = $user->getUtilisateurByMailU($_SESSION["email"]);
-            //         if ($util["email"] == $_SESSION["email"] && $util["mot_de_passe"] == $_SESSION["mot_de_passe"]
-            //         ) {
-            //             $ret = true;
-            //         }
-            //     }
-            //     return $ret;
-            // }
-    // include_once RACINE . "../authentification.php" ; 
-    
-    ?>
-
     <title>
         <?php if (isset($titre))
                       $titre;
@@ -42,8 +20,16 @@
             <div id="tete">
                 <h1>My medical</h1>
                 <span class="apropos">
-                    <?php //if($isLoggedOn) : ?>
-                        <a href="index.php">Déconnexion</a>
+                    <?php 
+                        require_once RACINE . "../modele/bd.utilisateur.inc.php";
+
+                        // recuperation des donnees GET, POST, et SESSION
+                        
+                        $con = new \Mymedical\modele\Connexion();
+                        $res=$con->isLoggedOn();
+                        if(isset($res) && $res) {?>
+                         <a href="index.php">Déconnexion</a>
+                         <?php  }?>
                     <?php //else : ?>
                     <!-- <a href="#">A&nbspPROPOS</a> -->
                     <?php //endif; ?>

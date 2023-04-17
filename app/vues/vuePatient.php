@@ -13,11 +13,38 @@
             </div>
             <div class="historique">
                 <h2> Historique déclaration </h2>
-                <p> Prénom  <span>Prénom</span></p>
-                <p> Nom de famille <span>Nom de famille</span></p>
-                <p> Adresse mail <span>Adresse mail</span></p>
-                <p> Mot de passe <span>*******************</span></p>
-                <p> Numéro de sécurité sociale <span>Numéro sécurité sociale</span></p>
+
+                <?php if(isset($listDeclarations)){ 
+                    
+                    if( count($listDeclarations) === 0 ) echo '<span>Pas de déclaration</span>';
+
+                    else{
+
+                        for ($i = 0; $i < count(($listDeclarations)); $i++) { 
+                            $res = $listDeclarations[$i];
+                    ?>
+                            <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">Déclaration N°<?php $res['id_declaration']?></div>
+                                <div class="accordion-content">
+                                    <form>
+                                        <?php if($res['est_traitee']) {?>
+                                            <span class="traitee"> déclaration traitée
+                                        <?php } else {?>
+                                            <span class="non_traitee"> En cours de traitement  
+                                       <?php }?>
+                                        </span>
+
+                                    <a href="?action=detailsDeclarationPantient&id_declatation=<?php $res['id_declaration']?>">Voir</a>
+                                    </form>
+                                </div>
+                            </div>
+
+                       <?php } ?>
+                    <?php } ?>
+                
+                <?php } ?>
+
             </div>
         </div>
     <div class="declaration">
@@ -25,10 +52,12 @@
         <a href=".?action=declaration">Déclarer</a>
     </div>  
     </main>
+    <script src="/../static/librairie/bootstrapp/js/accordeon.js"></script>
+
 </body>
 </html>
 <?php //echo($user["nom"]) ;
 
 //echo($user["prenom"]) ;?> 
-    <?php require ('vueFooter.php'); ?>
+    <?php //require ('vueFooter.php'); ?>
 

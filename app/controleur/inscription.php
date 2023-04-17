@@ -77,8 +77,8 @@ $msg="My Medical";
             }else{
 
                 $message="Vous êtes déjà inscrit !";
-                require ('app/vues/entete.php');
-                require ('app/vues/home.php');
+                require ('app/vues/vueEntete.php');
+                require ('app/vues/vueHome.php');
             }
    
     }
@@ -97,8 +97,8 @@ $msg="My Medical";
         /*header("Location: http://localhost/mymedical");
         exit();*/
 
-        require ('app/vues/entete.php');
-        require ('app/vues/home.php');
+        require ('app/vues/vueEntete.php');
+        require ('app/vues/vueHome.php');
     }
      
 ?>

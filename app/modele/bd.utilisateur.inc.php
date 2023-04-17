@@ -42,7 +42,7 @@ class Utilisateur extends DbConnector {
         return $resultat;
     }
 
-        public function addUtilisateur($email, $mdpU, $role, $prenom, $nom, $genre, $dateN) {
+    public function addUtilisateur($email, $mdpU, $role, $prenom, $nom, $genre, $dateN) {
         try {
             $bdd = $this->dbConnect();
 
@@ -68,6 +68,75 @@ class Utilisateur extends DbConnector {
         }
         return $resultat;
     }
+
+
+    public function getListDeclarationPatient($id_patient){
+
+        $resultat = array();
+        try {
+            $bdd = $this->dbConnect();
+            $req = $bdd->prepare("SELECT * FROM declaration WHERE id_patient=:id_patient");
+            $req->bindValue(':id_patient', $id_patient);
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            die( "Erreur !: " . $e->getMessage() );
+        }
+        return $resultat;
+
+    }
+
+    //deatils déclaration d'un patient
+    public function getDeclarationDetails($id_declaration){
+
+        $resultat = array();
+        try {
+            $bdd = $this->dbConnect();
+            $req = $bdd->prepare("SELECT * FROM declaration_symtomes WHERE Id_declaration=:id_declaration");
+            $req->bindValue(':id_declaration', $id_declaration);
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            die( "Erreur !: " . $e->getMessage() );
+        }
+        return $resultat;
+    }
+
+
+        public function getAllDeclaration(){
+
+            $resultat = array();
+            
+            try {
+                $bdd = $this->dbConnect();
+                $req = $bdd->prepare("SELECT * FROM declaration");
+                $req->execute();
+    
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+
+                while ($ligne) {
+                    $resultat[] = $ligne;
+                    $ligne = $req->fetch(PDO::FETCH_ASSOC);
+                }
+                
+            } catch (PDOException $e) {
+                die( "Erreur !: " . $e->getMessage() );
+            }
+            return $resultat;
+    
+        }
 
 }
 

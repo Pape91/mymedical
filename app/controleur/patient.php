@@ -24,6 +24,7 @@ if ($con->isLoggedOn()){
     $utilisateur = new \Mymedical\modele\Utilisateur();
     $mailU = $con->getMailULoggedOn();
     $user = $utilisateur->getUtilisateurByMailU($mailU);
+    $listDeclarations = $utilisateur->getListDeclarationPatient($user['Id_utilisateur']);
     // appel du script de vue qui permet de gerer l'affichage des donnees
     $titre = "Mon profil";
     // include RACINE . "../vues/entete.php";
@@ -31,7 +32,7 @@ if ($con->isLoggedOn()){
     
 } else {
     $titre = "Mon profil";
-    include RACINE . "../vues/entete.php";
+    include RACINE . "../vues/vueEntete.php";
     
 }
 

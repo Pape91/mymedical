@@ -242,12 +242,6 @@ button[type="submit"]:hover{
   margin-bottom: 10px;
 }
 
-/* .profil p, .historique p {
-  margin-top: 0;
-  margin-bottom: 10px;
-} */
-
-
 .historique p{
   margin: 30px;
 }
@@ -270,20 +264,11 @@ a:hover {
 }
 
 /* =========================vueDeclaration======================== */
-/* .titre_declaration h1{
-  text-align: center;
-  margin: 10px;
-}
-#autre_symptome{
-  margin: 10px;
-}
-#texte_autre{
 
-} */
 /* Style pour la div contenant le titre */
+
 .titre_declaration {
   text-align: center;
-  /* margin-bottom: 20px; */
   margin-top: 10px;
 }
 
@@ -291,9 +276,7 @@ a:hover {
 /* Style pour les spans contenant le nom du symptôme et les options de choix */
 #symptomes span {
   display: inline-block;
-  /* width: 200px; */
   font-size: 1.2rem;
-  /* font-weight: bold; */
 }
 
 /* Style pour les div contenant les symptômes individuels */
@@ -341,6 +324,7 @@ button[type="submit"] {
   border: 1px solid var(--fond-bleu);
   border-radius: 5px;
   overflow: hidden;
+
 }
 
 .accordion-item {
@@ -363,6 +347,7 @@ button[type="submit"] {
 
 .accordion-content {
   max-height: 0;
+  margin: 5px;
   overflow: hidden;
   padding: 0 18px;
   transition: max-height 0.2s ease-out;
