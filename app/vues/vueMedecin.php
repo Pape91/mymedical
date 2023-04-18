@@ -1,6 +1,5 @@
-
-    <main id="contenu" class="container">
-        <div class="corps_patient">
+<main id="contenu" class="container">
+    <div class="corps_patient">
             <div class="donnees">
                 <h2> Informations personnelles </h2>
                 <p> Prénom <?php //echo($user["prenom"]) ?></p>
@@ -13,14 +12,14 @@
                 <h2> Historique déclaration </h2>
                     <div class="accordion">
                         <div class="accordion-item">
-                        <div class="accordion-header">Déclaration 1</div>
+                            <div class="accordion-header">Déclaration 1</div>
                         <div class="accordion-content">
                             <form>
                             <p></p>
                             <a href="#">Traiter</a>
                             </form>
                         </div>
-                        </div>
+                    </div>
                         <div class="accordion-item">
                         <div class="accordion-header">Déclaration 2</div>
                         <div class="accordion-content">
@@ -29,7 +28,7 @@
                             <a href="#">Traiter</a>
                             </form>
                         </div>
-                        </div>
+                    </div>
                     </div>
             </div>
         </div>
@@ -37,8 +36,9 @@
         <h4>Déclarer mes symptômes</h4>
         <a href=".?action=declaration">Déclarer</a>
     </div>   -->
-    </main>
+</main>
 
-    <script src="../../static/librairie/bootstrapp/js/accordeon.js"></script>
+<!-- <script src="../../static/librairie/bootstrapp/js/accordeon.js"></script> -->
 </body>
+<?php //include('vues/vueFooter.php'); ?>
 </html>

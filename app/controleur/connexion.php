@@ -49,7 +49,7 @@ if($formulaireOk && !$user){
         $formulaireOk=false;
 }
 
-if ($formulaireOk && $aut->isLoggedOn()){ // si l'utilisateur est connecté on redirige vers le controleur monProfil
+if ($formulaireOk && $aut->isLoggedOn()){ // si l'utilisateur est connecté on redirige vers le controleur patient
 
    
     $role = $user["role"];

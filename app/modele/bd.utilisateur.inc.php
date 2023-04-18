@@ -18,6 +18,7 @@ class Utilisateur extends DbConnector {
             $req->execute();
 
             $resultat = array();
+
             while ($ligne = $req->fetch(PDO::FETCH_ASSOC)) {
                 $resultat[] = $ligne;
             }
@@ -27,12 +28,27 @@ class Utilisateur extends DbConnector {
         return $resultat;
     }
 
-        public function getUtilisateurByMailU($email) {
+    public function getUtilisateurByMailU($email) {
 
         try {
             $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT * FROM utilisateur WHERE email=:email");
             $req->bindValue(':email', $email, PDO::PARAM_STR);
+            $req->execute();
+
+            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die( "Erreur !: " . $e->getMessage() );
+        }
+        return $resultat;
+    }
+
+    public function getPatientByIdUser($idUser) {
+
+        try {
+            $bdd = $this->dbConnect();
+            $req = $bdd->prepare("SELECT * FROM patients WHERE Id_utilisateur=:id_patient");
+            $req->bindValue(':id_patient', $idUser, PDO::PARAM_STR);
             $req->execute();
 
             $resultat = $req->fetch(PDO::FETCH_ASSOC);
@@ -98,7 +114,15 @@ class Utilisateur extends DbConnector {
         $resultat = array();
         try {
             $bdd = $this->dbConnect();
-            $req = $bdd->prepare("SELECT * FROM declaration_symtomes WHERE Id_declaration=:id_declaration");
+            $req = $bdd->prepare("SELECT s.nom_symptome, di.reponse_declaration, di.date_reponse, d.date_declaration, d.autres  FROM declaration_symptomes ds 
+                    INNER JOIN declaration d 
+                        ON d.id_declaration = ds.Id_declaration 
+                    INNER JOIN symptomes_type s 
+                        ON s.Id_symptome = ds.Id_symptome  
+                        INNER JOIN diagnostic di  
+                        ON di.Id_declaration = d.id_declaration   
+                    WHERE ds.Id_declaration=:id_declaration");
+
             $req->bindValue(':id_declaration', $id_declaration);
             $req->execute();
 
@@ -118,7 +142,7 @@ class Utilisateur extends DbConnector {
         public function getAllDeclaration(){
 
             $resultat = array();
-            
+
             try {
                 $bdd = $this->dbConnect();
                 $req = $bdd->prepare("SELECT * FROM declaration");

@@ -72,21 +72,20 @@ class Connexion extends DbConnector {
         function isLoggedOn() {
             if (!isset($_SESSION)) {
                 session_start();
-
-                if (!isset($_SESSION["email"])) {
-                    $user = new \Mymedical\modele\Utilisateur();
-                    $util = $user->getUtilisateurByMailU($_SESSION["email"]);
-    
-                    if ($util["email"] == $_SESSION["email"] && $util["mot_de_passe"] == $_SESSION["mot_de_passe"]
-                    ) {
-                        $ret = true;
-                    }
-                }
             }
             $ret = false;
 
             //à refaire
-           
+            
+            if (isset($_SESSION["email"])) {
+                $user = new \Mymedical\modele\Utilisateur();
+                $util = $user->getUtilisateurByMailU($_SESSION["email"]);
+
+                if ($util["email"] == $_SESSION["email"] && $util["mot_de_passe"] == $_SESSION["mot_de_passe"]
+                ) {
+                    $ret = true;
+                }
+            }
             return $ret;
         }
     }

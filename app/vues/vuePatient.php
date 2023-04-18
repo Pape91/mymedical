@@ -5,11 +5,11 @@
         <div class="corps_patient">
             <div class="donnees">
                 <h2> Informations personnelles </h2>
-                <p> Prénom </p>
-                <p> Nom de famille :</p>
-                <p> Adresse mail </p>
-                <p> Mot de passe</p>
-                <p> Numéro de sécurité sociale</p>
+                <p> Prénom : <?php echo $user["prenom"]?></p>
+                <p> Nom de famille : <?php echo $user["nom"]?></p>
+                <p> Adresse mail : <?php echo $user["email"]?></p>
+                <p> Mot de passe : ******</p>
+                <p> Numéro de sécurité sociale : <?php echo $patient["numSecu"]?></p>
             </div>
             <div class="historique">
                 <h2> Historique déclaration </h2>
@@ -19,13 +19,15 @@
                     if( count($listDeclarations) === 0 ) echo '<span>Pas de déclaration</span>';
 
                     else{
-
+                        ?>
+                        <div class="accordion">
+                        <?php    
                         for ($i = 0; $i < count(($listDeclarations)); $i++) { 
                             $res = $listDeclarations[$i];
                     ?>
-                            <div class="accordion">
+                            
                             <div class="accordion-item">
-                                <div class="accordion-header">Déclaration N°<?php $res['id_declaration']?></div>
+                                <div class="accordion-header">Déclaration N°<?php echo $res['id_declaration']?></div>
                                 <div class="accordion-content">
                                     <form>
                                         <?php if($res['est_traitee']) {?>
@@ -35,12 +37,13 @@
                                        <?php }?>
                                         </span>
 
-                                    <a href="?action=detailsDeclarationPantient&id_declatation=<?php $res['id_declaration']?>">Voir</a>
+                                    <a href="?action=detailsDeclarationPatient&id_declaration=<?php echo $res['id_declaration']?>">Voir</a>
                                     </form>
                                 </div>
-                            </div>
+                            
 
                        <?php } ?>
+                       </div>
                     <?php } ?>
                 
                 <?php } ?>
@@ -52,9 +55,10 @@
         <a href=".?action=declaration">Déclarer</a>
     </div>  
     </main>
-    <script src="/../static/librairie/bootstrapp/js/accordeon.js"></script>
+    <script src="../../static/librairie/bootstrapp/js/accordeon.js"></script>
 
 </body>
+<?php //include('vues/vueFooter.php'); ?>
 </html>
 <?php //echo($user["nom"]) ;
 

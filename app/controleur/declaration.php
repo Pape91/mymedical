@@ -18,6 +18,7 @@
     $objSymptome = new \Mymedical\modele\Symptome();
     $listSymptomes = $objSymptome->getSymptomes();
 
+    $message='';
     $tabSymtomes=array();
 
     //formulaire dynamique
@@ -33,8 +34,8 @@
 
     $autre="";
     //autres symtomes
-    if(isset($_POST["autre_symptome"]))
-        $autre= $_POST["autre_symptome"];
+    if(isset($_POST["autre"]))
+        $autre= $_POST["autre"];
 
 
     if(!empty($tabSymtomes)){
@@ -44,7 +45,7 @@
 
         if($user!=null){
 
-            $res = $objDeclaration->addDeclaration($user["Id_utilisateur"]);
+            $res = $objDeclaration->addDeclaration($user["Id_utilisateur"], $autre);
 
             $objDeclaration->addDeclaration_symptome($res, $tabSymtomes);
 
@@ -52,17 +53,19 @@
             
             require ('app/vues/vueEntete.php');
             require ('app/vues/vueDeclaration.php');
+            require ('app/vues/vueFooter.php');
 
         }
         else{
-
             require ('app/vues/vueEntete.php');
             require ('app/vues/vueHome.php');
+            require ('app/vues/vueFooter.php');
         }
     }
     else{
 
         require ('app/vues/vueEntete.php');
         require ('app/vues/vueDeclaration.php');
+        require ('app/vues/vueFooter.php');
     }
 ?>

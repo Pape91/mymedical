@@ -8,25 +8,30 @@ use PDO;
 
 class Declaration extends DbConnector{
 
-    public function addDeclaration($Id_patient){
+    public function addDeclaration($Id_patient, $autres){
         try {
             $bdd = $this->dbConnect();
 
-            $req = $bdd->prepare("INSERT INTO declaration(id_patient, date_declaration, est_traitee, observation)
-            VALUES(:id_patient, :date_declaration, :est_traitee, :observation)");
+            $req = $bdd->prepare("INSERT INTO declaration(Id_patient, date_declaration, est_traitee, autres)
+            VALUES(:Id_patient, :date_declaration, :est_traitee, :autres)");
+
+            $req1 = $bdd->prepare("INSERT INTO diagnostic(Id_declaration)
+            VALUES(:Id_declaration)");
 
             $date = new \DateTime();
             $date = $date->format('Y-m-d H:i:s');
             $est_traite=false;
-            $observation="";
-            $req->bindParam(':id_patient', $Id_patient);
+           
+            $req->bindParam(':Id_patient', $Id_patient);
             $req->bindParam(':date_declaration',  $date);
             $req->bindParam(':est_traitee', $est_traite);
-            $req->bindParam(':observation',  $observation);
+            $req->bindParam(':autres',  $autres);
             
             $req->execute();
-
             $resultat = $bdd->lastInsertId();
+
+            $req1->bindParam(':Id_declaration', $resultat);
+            $req1->execute();
 
         } catch (PDOException $e) {
             die( "Erreur !: " . $e->getMessage());

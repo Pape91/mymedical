@@ -7,7 +7,7 @@
         </div> -->
 
 </footer>
-<script src="../../static/librairie/bootstrapp/js/accordeon.js"></script>
+<script src="static/librairie/bootstrapp/js/accordeon.js"></script>
 
 </body>
 </html>

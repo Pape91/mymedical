@@ -25,15 +25,16 @@ if ($con->isLoggedOn()){
     $mailU = $con->getMailULoggedOn();
     $user = $utilisateur->getUtilisateurByMailU($mailU);
     $listDeclarations = $utilisateur->getListDeclarationPatient($user['Id_utilisateur']);
+    $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
     // appel du script de vue qui permet de gerer l'affichage des donnees
     $titre = "Mon profil";
     // include RACINE . "../vues/entete.php";
     include RACINE . "../vues/vuePatient.php";
+    require ('app/vues/vueFooter.php');
     
 } else {
     $titre = "Mon profil";
     include RACINE . "../vues/vueEntete.php";
-    
 }
 
 ?>
