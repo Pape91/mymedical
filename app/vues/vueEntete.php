@@ -28,7 +28,7 @@
                         $con = new \Mymedical\modele\Connexion();
                         $res=$con->isLoggedOn();
                         if(isset($res) && $res) {?>
-                         <a href="index.php">Déconnexion</a>
+                         <a href="?action=logout">Déconnexion</a>
                          <?php  }?>
                     <?php //else : ?>
                     <!-- <a href="#">A&nbspPROPOS</a> -->

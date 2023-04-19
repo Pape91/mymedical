@@ -13,6 +13,8 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     die('Erreur : '.basename(__FILE__));
 }
 
+include_once  'login.php';
+
 require_once RACINE . "/modele/authentification.php";
 require_once RACINE . "/modele/bd.utilisateur.inc.php";
 

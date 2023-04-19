@@ -8,6 +8,9 @@
         // Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
         die('Erreur : '.basename(__FILE__));
     }
+
+    include_once  'login.php';
+    
     include_once __DIR__ . "/config.php";
 
     require_once RACINE . "/modele/authentification.php";

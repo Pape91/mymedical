@@ -39,6 +39,35 @@ class Declaration extends DbConnector{
         return $resultat;
     }
 
+    public function addDiagnostic($Id_diagnostic, $reponse, $idMedecin){
+        try {
+            $bdd = $this->dbConnect();
+
+            $req = $bdd->prepare("UPDATE declaration SET est_traitee=:est_traitee WHERE Id_declaration=:Id_declaration");
+
+            $req1 = $bdd->prepare("UPDATE diagnostic SET reponse_declaration=:reponse_declaration, Id_medecin=:Id_medecin, date_reponse=:date_reponse WHERE Id_declaration=:Id_declaration");
+
+            $date = new \DateTime();
+            $date = $date->format('Y-m-d H:i:s');
+            $est_traite=true;
+
+            $req->bindParam(':est_traitee', $est_traite);
+            $req->bindParam(':Id_declaration',  $Id_diagnostic);
+
+            $req1->bindParam(':reponse_declaration', $reponse);
+            $req1->bindParam(':date_reponse',  $date);
+            $req1->bindParam(':Id_medecin',  $idMedecin);
+            $req1->bindParam(':Id_declaration',  $Id_diagnostic);
+            
+            if(($req1->execute()))
+                $req->execute();
+
+        } catch (PDOException $e) {
+            die( "Erreur !: " . $e->getMessage());
+        }
+        //return $resultat;
+    }
+
     public function addDeclaration_symptome($idDeclaration, $listSymptome){
         try {
 

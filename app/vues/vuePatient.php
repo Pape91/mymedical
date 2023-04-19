@@ -2,6 +2,7 @@
     <?php require ('vueEntete.php'); ?>
     <link rel="stylesheet" href="../../static/css/style.css">
     <main id="contenu" class="container">
+        <h2 class="profil"> Profil Patient </h2>
         <div class="corps_patient">
             <div class="donnees">
                 <h2> Informations personnelles </h2>
@@ -40,14 +41,13 @@
                                     <a href="?action=detailsDeclarationPatient&id_declaration=<?php echo $res['id_declaration']?>">Voir</a>
                                     </form>
                                 </div>
-                            
+                            </div>
 
                        <?php } ?>
                        </div>
                     <?php } ?>
                 
                 <?php } ?>
-
             </div>
         </div>
     <div class="declaration">

@@ -58,6 +58,22 @@ class Utilisateur extends DbConnector {
         return $resultat;
     }
 
+
+    public function getMedecinByIdUser($idUser) {
+
+        try {
+            $bdd = $this->dbConnect();
+            $req = $bdd->prepare("SELECT * FROM medecin WHERE Id_utilisateur=:Id_medecin");
+            $req->bindValue(':Id_medecin', $idUser, PDO::PARAM_STR);
+            $req->execute();
+
+            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die( "Erreur !: " . $e->getMessage() );
+        }
+        return $resultat;
+    }
+
     public function addUtilisateur($email, $mdpU, $role, $prenom, $nom, $genre, $dateN) {
         try {
             $bdd = $this->dbConnect();
@@ -114,7 +130,7 @@ class Utilisateur extends DbConnector {
         $resultat = array();
         try {
             $bdd = $this->dbConnect();
-            $req = $bdd->prepare("SELECT s.nom_symptome, di.reponse_declaration, di.date_reponse, d.date_declaration, d.autres  FROM declaration_symptomes ds 
+            $req = $bdd->prepare("SELECT s.nom_symptome, di.reponse_declaration, di.date_reponse, d.est_traitee ,d.date_declaration, d.autres  FROM declaration_symptomes ds 
                     INNER JOIN declaration d 
                         ON d.id_declaration = ds.Id_declaration 
                     INNER JOIN symptomes_type s 
@@ -139,13 +155,13 @@ class Utilisateur extends DbConnector {
     }
 
 
-        public function getAllDeclaration(){
+        public function getAllDeclarationNonTraitees(){
 
             $resultat = array();
 
             try {
                 $bdd = $this->dbConnect();
-                $req = $bdd->prepare("SELECT * FROM declaration");
+                $req = $bdd->prepare("SELECT * FROM declaration WHERE est_traitee is false");
                 $req->execute();
     
                 $ligne = $req->fetch(PDO::FETCH_ASSOC);

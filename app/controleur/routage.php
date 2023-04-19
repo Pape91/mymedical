@@ -8,7 +8,7 @@
 function redirigeVers($action="defaut") {
 	if($action == "") $action = "defaut";
     $lesActions = array();
-    $lesActions["defaut"] = "home.php";
+    $lesActions["defaut"] = "vueHome.php";
     $lesActions["inscription"] = "inscription.php";
     $lesActions["pre_inscription"] = "pre_inscription.php";
     $lesActions["connexion"] = "connexion.php";
@@ -18,6 +18,8 @@ function redirigeVers($action="defaut") {
     $lesActions["declaration"] = "declaration.php";
     $lesActions["medecin"] = "medecin.php";
     $lesActions["detailsDeclarationPatient"] = "detailsDeclaration.php";
+    $lesActions["reponseDeclaration"] = "reponseDeclaration.php";
+    $lesActions["logout"] = "logout.php";
 
 
 

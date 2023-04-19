@@ -25,14 +25,17 @@ class Connexion extends DbConnector {
             $util = $user->getUtilisateurByMailU($email);
             if(!$util)
                 return false;
-            else $mdpBD = $util["mot_de_passe"];
+            else{
+                $mdpBD = $util["mot_de_passe"];
+                if (trim($mdpBD) == trim(crypt($mdpU, $mdpBD))) {
+                    // le mot de passe est celui de l'utilisateur dans la base de donnees
+                    $_SESSION["email"] = $email;
+                    $_SESSION["mot_de_passe"] = $mdpBD;
+                }
+                else return false;
 
-            if (trim($mdpBD) == trim(crypt($mdpU, $mdpBD))) {
-                // le mot de passe est celui de l'utilisateur dans la base de donnees
-                $_SESSION["email"] = $email;
-                $_SESSION["mot_de_passe"] = $mdpBD;
-            }
-            else return false;
+            } 
+            
         }
 
         function logout() {

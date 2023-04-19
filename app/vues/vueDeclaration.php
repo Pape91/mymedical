@@ -17,10 +17,10 @@
             else 
                 for ($i = 0; $i < count(($listSymptomes)); $i++) { ?>
 
-                <div>
+                <div class="question">
                 <?php $res = $listSymptomes[$i];?>
                 <span>
-                    <?php echo $res["nom_symptome"]?>: 
+                    <?php echo $res["nom_symptome"]?> : 
                     Oui <input type="radio" name="yesno_<?php echo $res["Id_symptome"]?>" value="oui" required>
                     Non <input type="radio" value="non" name="yesno_<?php echo $res["Id_symptome"]?>" required>
                 </span>

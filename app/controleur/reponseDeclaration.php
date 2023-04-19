@@ -25,18 +25,19 @@
 
 
     $idDeclaration =  $_GET['id_declaration'];
-    $idMedecin='';
+    $idMedecin =  $_GET['id_medecin'];
+    $reponse=$_POST['reponse'];
     $estMedecin = false;
+    
+    $declaration = new \Mymedical\modele\Declaration();
+    $declaration->addDiagnostic($idDeclaration, $reponse , $idMedecin);
 
-    if( isset($_GET['estMedecin']) && $_GET['estMedecin']=="oui"){
-        $estMedecin = true;
-        $idMedecin = $_GET['id_medecin'];
-    }
-        
+    $message = "Déclarartion répondue avec succès !";
 
-    $utilisateur = new \Mymedical\modele\Utilisateur();
-    $declaration = $utilisateur->getDeclarationDetails($idDeclaration);
+    //require ('app/vues/vueEntete.php');
+    //require ('app/vues/vueMedecin.php');
+    header("Location: http://localhost/mymedical/?action=medecin");
+    exit();
+   
 
-    require ('app/vues/vueEntete.php');
-    require ('app/vues/vueDetailsDeclaration.php');
 ?>

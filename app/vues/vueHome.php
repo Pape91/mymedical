@@ -27,9 +27,9 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
                 <form action="./?action=connexion" method="POST">
                     
                     <label for="email" >E-mail :</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required>
                     <label for="password">Mot de passe :</label>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required>
                     <button type="submit">Connexion</button>
                     <label for="text">Mot de passe oublié?</label>
                 </form>
