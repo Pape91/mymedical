@@ -62,13 +62,7 @@ $msg="My Medical";
                     $admin = new \Mymedical\modele\Admin();
                     $admin->addAdmin($data_user["Id_utilisateur"], $num);
                 }
-                // echo($ret);
-    
-                // ajouter un nouveau médecin
-                // $medecin->addMedecin('numPro', 'Id_utilisateur');
-    
-                // // ajouter un nouvel administrateur
-                // $admin->addAdmin('numPro', 'Id_utilisateur');
+
                 if ($ret) {
                     $inscrit = true;
                 } else {

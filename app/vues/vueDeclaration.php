@@ -38,6 +38,6 @@
         <button type="submit">Envoyer</button>
     </form>
     <span>
-        <a href=".?action=patient">retour à la page profil</a>
+        <div class="retour_profil"><a href=".?action=patient">retour à la page profil</a></div>
     </span>
 </main>

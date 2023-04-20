@@ -1,4 +1,4 @@
-<!-- <main id="contenu" class="container"> -->
+<main id="contenu" class="container">
 <div id="details">
     <h2>Détails Déclaration</h2>
 <?php
@@ -61,7 +61,7 @@
 
 ?>
 
-    <div><a href="?action=<?php echo $action ?>"> Retour à la page profil</a></div>
+    <div class="retour_profil"><a href="?action=<?php echo $action ?>"> Retour à la page profil</a></div>
 
 </div>
 </main>

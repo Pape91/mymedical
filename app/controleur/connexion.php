@@ -17,14 +17,6 @@
     include_once RACINE . "../modele/bd.medecin.php";
     include_once RACINE . "../modele/bd.admin.php";
 
-    // creation du menu burger
-    // $menuBurger = array();
-    // $menuBurger[] = ["url"=>"./?action=connexion","label"=>"Connexion"];
-    // $menuBurger[] = ["url"=>"./?action=inscription","label"=>"Inscription"];
-
-    //recuperation des donnees GET, POST, et SESSION
-
-
      // traitement si necessaire des donnees recuperees
      $aut = new \Mymedical\modele\Connexion();
      $utilisateur = new \Mymedical\modele\Utilisateur();

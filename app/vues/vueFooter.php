@@ -8,6 +8,7 @@
 
 </footer>
 <script src="static/librairie/bootstrapp/js/accordeon.js"></script>
+<script src="static/librairie/bootstrapp/js/inscription.js"></script>
 
 </body>
 </html>

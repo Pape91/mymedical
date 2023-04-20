@@ -61,26 +61,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
             </select>
               <label id="libelle_role">numéro sécurité sociale</label>
               <input type="text" id="numero_role" name="num" required>
-              <!-- <input type="text" id="numero_role" name="numRole" required> -->
             <button type="submit">S'inscrire</button>
           </form>
     </main>
-
-    <script>
-      
-      function getRole(){
-        document.getElementById("role").addEventListener("change", (event) => {
-
-          var role = document.getElementById("role").value;
-          if(role=="patient"){
-            document.getElementById("libelle_role").innerHTML="numéro sécurité sociale";
-          }
-           
-          else
-            document.getElementById("libelle_role").innerHTML="numéro professionnel";
-        });
-      }
-
-      getRole();
-
-    </script>
+    <?php require ('app/vues/vueFooter.php'); ?>

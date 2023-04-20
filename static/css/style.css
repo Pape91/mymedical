@@ -56,11 +56,11 @@ a{
     max-width: 1200px;
     width: 100%;
     margin: 15px auto 0;
-    text-align: center;
 }
 .container .bloc{
   margin-top: 30px;
   display: flex;
+  text-align: center;
 }
 
 #tete {
@@ -195,13 +195,15 @@ button[type="submit"]:hover{
 }
 
 /* ===========================Vue page patient============================== */
-
+.container h2{
+  text-align: center;
+}
 #date{
   font-weight: bold;
 }
 .corps_patient{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 20px;
 }
 
@@ -229,9 +231,11 @@ button[type="submit"]:hover{
 .donnees p{
   margin: 30px 0;
   text-align: initial;
+      padding: 3px 0 0 30px;
 }
 .declaration{
   justify-content: space-around;
+  text-align: center;
   margin : 20px 0;
 }
 
@@ -276,6 +280,9 @@ a:hover {
 }
 #details div{
   margin: 15px 0;
+}
+.retour_profil{
+  text-align: center;
 }
 .symtomes{
   padding: 3px 0 0 30px;
@@ -372,11 +379,13 @@ button[type="submit"] {
   .formulaire {
     width: 100%;
   }
-
+  .corps_patient{
+    display: block;
+  }
   #corps{
-    width: 100%;
-    padding: 0;
-    margin-top: 17%;
+    /* width: 100%; */
+    /* padding: 0; */
+    /* margin-top: 17%; */
   }
 
   .titre h1 {

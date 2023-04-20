@@ -31,7 +31,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
                     <label for="password">Mot de passe :</label>
                     <input type="password" id="password" name="password" required>
                     <button type="submit">Connexion</button>
-                    <label for="text">Mot de passe oublié?</label>
+                    <label for="text"><a href="#">Mot de passe oublié?</a></label>
                 </form>
             </div> 
     </div>

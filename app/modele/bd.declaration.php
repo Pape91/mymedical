@@ -2,7 +2,6 @@
 
 namespace Mymedical\modele;
 
-//include_once "bd.php";
 use Mymedical\modele\bd;
 use PDO;
 
@@ -65,7 +64,7 @@ class Declaration extends DbConnector{
         } catch (PDOException $e) {
             die( "Erreur !: " . $e->getMessage());
         }
-        //return $resultat;
+
     }
 
     public function addDeclaration_symptome($idDeclaration, $listSymptome){

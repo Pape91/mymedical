@@ -73,6 +73,20 @@ class Utilisateur extends DbConnector {
         }
         return $resultat;
     }
+    public function getAdminByIdUser($idUser) {
+
+        try {
+            $bdd = $this->dbConnect();
+            $req = $bdd->prepare("SELECT * FROM admin WHERE Id_utilisateur=:Id_admin");
+            $req->bindValue(':Id_admin', $idUser, PDO::PARAM_STR);
+            $req->execute();
+
+            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die( "Erreur !: " . $e->getMessage() );
+        }
+        return $resultat;
+    }
 
     public function addUtilisateur($email, $mdpU, $role, $prenom, $nom, $genre, $dateN) {
         try {
@@ -88,12 +102,9 @@ class Utilisateur extends DbConnector {
             $req->bindParam(':nom', $nom);
             $req->bindParam(':genre', $genre);
             $req->bindParam(':date_de_naissance', $dateN);
-            //$req->bindValue(':numSecu', $numSecu, PDO::PARAM_STR);
-            //$req->bindValue(':numPro', $numPro, PDO::PARAM_STR);
-
+           
             $resultat = $req->execute();
 
-            // var_dump($resultat);
 
         } catch (PDOException $e) {
             die( "Erreur !: " . $e->getMessage());

@@ -13,7 +13,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     die('Erreur : '.basename(__FILE__));
 }
 
-include_once  'login.php';
+include_once  ('login.php');
 
 require_once RACINE . "/modele/authentification.php";
 require_once RACINE . "/modele/bd.utilisateur.inc.php";
@@ -29,7 +29,6 @@ if ($con->isLoggedOn()){
     $listDeclarations = $utilisateur->getListDeclarationPatient($user['Id_utilisateur']);
     $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
     // appel du script de vue qui permet de gerer l'affichage des donnees
-    $titre = "Mon profil";
     // include RACINE . "../vues/entete.php";
     include RACINE . "../vues/vuePatient.php";
     require ('app/vues/vueFooter.php');

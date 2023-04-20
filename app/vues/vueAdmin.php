@@ -3,16 +3,16 @@
     <main id="contenu" class="container">
         <div class="corps_patient">
             <div class="donnees">
-                <h2> Informations personnelles </h2>
-                <p> Prénom </p>
-                <p> Nom de famille :</p>
-                <p> Adresse mail </p>
-                <p> Mot de passe</p>
-                <p> Numéro professionnel</p>
+            <h2> Informations personnelles </h2>
+                <p> Prénom : <?php echo $user["prenom"]?></p>
+                <p> Nom de famille : <?php echo $user["nom"]?></p>
+                <p> Adresse mail : <?php echo $user["email"]?></p>
+                <p> Mot de passe : ******</p>
+                <p> Numéro Professionnel : <?php echo $admin["numPro"]?></p>
             </div>
-            <div class="historique">
+            <!-- <div class="historique">
                 <h2> Historique déclaration </h2>
-            </div>
+            </div> -->
         </div>
         <form action=".?action=ajoutSymptome" method="POST">
             <span>

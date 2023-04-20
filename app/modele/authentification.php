@@ -3,7 +3,6 @@
 
 namespace Mymedical\modele;
 
-// include_once "bd.php";
 include_once RACINE . "../modele/bd.utilisateur.inc.php";
 require_once RACINE . "../modele/authentification.php";
 
@@ -11,8 +10,6 @@ use \mymedical\modele;
 
 
 use PDO;
-
-// Classe Admin
 
 class Connexion extends DbConnector {
 
@@ -77,9 +74,7 @@ class Connexion extends DbConnector {
                 session_start();
             }
             $ret = false;
-
-            //à refaire
-            
+          
             if (isset($_SESSION["email"])) {
                 $user = new \Mymedical\modele\Utilisateur();
                 $util = $user->getUtilisateurByMailU($_SESSION["email"]);
