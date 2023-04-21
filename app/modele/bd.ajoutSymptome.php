@@ -10,6 +10,7 @@ use PDO;
 
 class Symptome extends DbConnector {
 
+    // fonction qui permet d'ajouter des symptômes
     public function addSymptome($nom_symptome) {
         $resultat;
         try {
@@ -24,7 +25,7 @@ class Symptome extends DbConnector {
         }
         return $resultat;
     }
-
+        // Cette fonction permet de récupérer un symptôme par son nom
     public function getSymptomeByName($nom_symptome) {
         $resultat;
         try {
