@@ -63,7 +63,7 @@
         if($user!=null){
 
             // Ajouter une déclaration dans la base de données et récupérer l'ID de la déclaration ajoutée
-            $res = $objDeclaration->addDeclaration($user["Id_utilisateur"], $autre, $tabSymptomes);
+            $res = $objDeclaration->addDeclaration($user["Id_utilisateur"], $autre, $tabSymtomes);
 
             // Ajouter les symptômes cochés dans la déclaration
             //$objDeclaration->addDeclaration_symptome($res, $tabSymptomes);

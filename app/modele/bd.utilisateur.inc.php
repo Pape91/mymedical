@@ -185,7 +185,7 @@ class Utilisateur extends DbConnector {
                         ON u.Id_utilisateur = d.id_patient
                     INNER JOIN symptomes_type s 
                         ON s.Id_symptome = ds.Id_symptome  
-                        INNER JOIN diagnostic di  
+                    INNER JOIN diagnostic di  
                         ON di.Id_declaration = d.id_declaration   
                     WHERE ds.Id_declaration=:id_declaration");
 

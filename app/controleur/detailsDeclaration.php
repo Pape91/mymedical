@@ -24,7 +24,7 @@
 
     // Récupère l'identifiant de la déclaration depuis la requête GET
     $idDeclaration =  $_GET['id_declaration'];
-    echo ($idDeclaration);
+
     // Variables pour déterminer le rôle de l'utilisateur (médecin, administrateur, etc.)
     $idMedecin='';
     $estMedecin;
@@ -43,6 +43,8 @@
     // Récupère les détails de la déclaration depuis la base de données
     $utilisateur = new \Mymedical\modele\Utilisateur();
     $declaration = $utilisateur->getDeclarationDetails($idDeclaration);
+
+    echo "ok";
 
     // Inclut les vues pour l'en-tête et les détails de la déclaration
     require RACINE . '/vues/vueEntete.php';
