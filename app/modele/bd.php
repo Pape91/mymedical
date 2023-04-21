@@ -21,16 +21,16 @@ abstract class DbConnector
     if (isset(self::$bdd)) {
       return self::$bdd;
     } else {
+      if(isset($_ENV['DB_PORT']) && (!empty($_ENV['DB_PORT']))){
+        $port = ":" . $_ENV['DB_PORT'];
+      }
+      else{
+        $port = "";
+      }
       try {
-        if(isset($_ENV['DB_PORT']) && (!empty($_ENV['DB_PORT']))){
-          $port = ":" . $_ENV['DB_PORT'];
-        }
-        else{
-          $port = "";
-        }
         // Création d'un nouvel objet PDO pour établir une connexion à la base de données en utilisant les informations d'identification stockées dans un fichier .env
         self::$bdd = new PDO(
-          "mysql:dbname=" . $_ENV['DB_NAME'] . "; host=" . $_ENV['DB_HOST'] . "; charset=utf8", 
+          "mysql:dbname=" . $_ENV['DB_NAME'] . "; host=" . $_ENV['DB_HOST']. $port. "; charset=utf8", 
           $_ENV['DB_USERNAME'],
           $_ENV['DB_PASSWORD']
         );

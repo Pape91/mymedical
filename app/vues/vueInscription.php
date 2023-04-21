@@ -6,7 +6,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 }
 
 ?>
-    <?php require ('vueEntete.php'); ?>
+    <?php require RACINE .'/vues/vueEntete.php'; ?>
     
     <main id="contenu" class="container">
       <div class="formulaire">

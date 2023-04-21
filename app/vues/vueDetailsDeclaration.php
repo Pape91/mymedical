@@ -41,8 +41,7 @@
         }
        
     }
-     
-        
+ 
     echo '<div id="date">Date de déclaration <b>: '.$dateDeclaration.'</b></div>';
     echo '<div id="statut">Etat de la déclaration : <b>'.$statut .'</b></div>';
 ?>

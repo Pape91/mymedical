@@ -2,8 +2,8 @@
 // On commence par déclarer l'espace de noms et inclure les fichiers nécessaires
 namespace Mymedical\modele;
 
-include_once RACINE . "../modele/bd.utilisateur.inc.php";
-require_once RACINE . "../modele/authentification.php";
+include_once RACINE . "/modele/bd.utilisateur.inc.php";
+//require_once RACINE . "/modele/authentification.php";
 
 use \mymedical\modele;
 

@@ -35,5 +35,5 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
             </div> 
     </div>
 </main>
-<?php //require ('vueFooter.php'); ?>
+<?php //require RACINE . ('/vues/vueFooter.php'); ?>
 

@@ -16,7 +16,7 @@
     }
 
     // Inclusion du fichier contenant le formulaire de connexion
-    include_once  'login.php';
+    include_once RACINE . '/controleur/login.php';
     
     // Inclusion des fichiers contenant les fonctions pour gérer l'authentification et la BD des utilisateurs
     require_once RACINE . "/modele/authentification.php";
@@ -40,15 +40,15 @@
         $medecin = $utilisateur->getMedecinByIdUser($user['Id_utilisateur']);
 
         // Inclusion des fichiers de la vue pour l'entête, le contenu du profil et le pied de page
-        require ('app/vues/vueEntete.php');
-        require ('app/vues/vueMedecin.php');
-        require ('app/vues/vueFooter.php');
+        require RACINE . "/vues/vueEntete.php";
+        require RACINE . "/vues/vueMedecin.php";
+        require RACINE . "/vues/vueFooter.php";
         
     } else {
         // Si l'utilisateur n'est pas connecté, affichage de la page d'accueil
-        require ('app/vues/vueEntete.php');
-        require ('app/vues/vueHome.php');
-        require ('app/vues/vueEntete.php');
+        require RACINE . '/vues/vueEntete.php';
+        require RACINE . '/vues/vueHome.php';
+        require RACINE . '/vues/vueEntete.php';
     }
 
 ?>

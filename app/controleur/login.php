@@ -1,13 +1,16 @@
 <?php
 
-    require_once RACINE . "../modele/authentification.php";
+    require_once RACINE . "/modele/authentification.php";
 
  
      $aut = new \Mymedical\modele\Connexion();
  
      if(!($aut->isLoggedOn())){
+         $dis_url = $_SERVER['REQUEST_URI'];
+        $uri = trim(strtok($dis_url, '?'));
+        $hote =  'https://'.$_SERVER['SERVER_NAME'].$uri;
 
-        header("Location: http://localhost/mymedical");
+        header("Location: ". $hote);
         exit();
 
      }

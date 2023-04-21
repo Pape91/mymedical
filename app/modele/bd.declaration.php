@@ -7,7 +7,7 @@ use PDO;
 
 class Declaration extends DbConnector{
 
-    public function addDeclaration($Id_patient, $autres){
+    public function addDeclaration($Id_patient, $autres, $listSymptom){
         try {
             $bdd = $this->dbConnect();
 
@@ -32,6 +32,20 @@ class Declaration extends DbConnector{
             $req->execute();
             $resultat = $bdd->lastInsertId();
 
+            echo "<script type='text/javascript'>alert(['$symptome[0]']);</script>";
+            foreach($listSymptome as $symptome){
+                
+                $req3 = $bdd->prepare("INSERT INTO declaration_symptomes(Id_declaration, Id_symptome)
+                VALUES(:Id_declaration,:Id_symptome)");
+
+                $req3->bindParam(':Id_declaration', $resultat);
+                $req3->bindParam(':Id_symptome', $symptome);
+
+                echo 
+
+                $resultat = $req3->execute();
+            }
+
             $req1->bindParam(':Id_declaration', $resultat);
             $req1->execute();
 
@@ -41,7 +55,7 @@ class Declaration extends DbConnector{
         return $resultat;
     }
 
-    public function addDiagnostic($Id_diagnostic, $reponse, $idMedecin){
+    public function addDiagnostic($Id_diagnostic, $reponse, $idMedecin, $listSymptome){
         try {
             $bdd = $this->dbConnect();
 

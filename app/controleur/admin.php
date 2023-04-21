@@ -14,7 +14,7 @@
     }
 
     include_once  'login.php';
-    include_once RACINE . "../modele/bd.ajoutSymptome.php";
+    include_once RACINE . "/modele/bd.ajoutSymptome.php";
     require_once RACINE . "/modele/authentification.php";
     require_once RACINE . "/modele/bd.utilisateur.inc.php";
 
@@ -49,15 +49,15 @@
             }
         }
         
-        require ("app/vues/vueEntete.php");
-        require ("app/vues/vueAdmin.php");
-        require ("app/vues/vueFooter.php");
+        require RACINE . "/vues/vueEntete.php";
+        require RACINE . "/vues/vueAdmin.php";
+        require RACINE . "/vues/vueFooter.php";
         
     } else {
 
-        require ('app/vues/vueEntete.php');
-        require ('app/vues/vueHome.php');
-        require ('app/vues/vueEntete.php');
+        require RACINE . '/vues/vueEntete.php';
+        require RACINE . '/vues/vueHome.php';
+        require RACINE . '/vues/vueEntete.php';
     }
 
 ?>

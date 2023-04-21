@@ -1,5 +1,5 @@
 
-    <?php require ('vueEntete.php'); ?>
+    <?php require RACINE . '/vues/vueEntete.php'; ?>
     <link rel="stylesheet" href="../../static/css/style.css">
     <main id="contenu" class="container">
         <h2 class="profil"> Profil Patient </h2>

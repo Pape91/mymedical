@@ -16,7 +16,7 @@
                 <h1>My medical</h1>
                 <span class="apropos">
                     <?php 
-                        require_once RACINE . "../modele/bd.utilisateur.inc.php";
+                        require_once RACINE . "/modele/bd.utilisateur.inc.php";
 
                         // recuperation des donnees GET, POST, et SESSION
                         

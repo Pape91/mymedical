@@ -11,10 +11,10 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 
 // Inclusion des fichiers nécessaires
 include_once __DIR__ . "/config.php";
-include_once RACINE . "../modele/bd.utilisateur.inc.php";
-include_once RACINE . "../modele/bd.patient.php";
-include_once RACINE . "../modele/bd.medecin.php";
-include_once RACINE . "../modele/bd.admin.php";
+include_once RACINE . "/modele/bd.utilisateur.inc.php";
+include_once RACINE . "/modele/bd.patient.php";
+include_once RACINE . "/modele/bd.medecin.php";
+include_once RACINE . "/modele/bd.admin.php";
 
 // Initialisation des variables
 $inscrit = false;
@@ -67,8 +67,8 @@ if (isset($_POST['email'])) {
     } else {
         // Si l'utilisateur existe déjà dans la base de données
         $message = "Vous êtes déjà inscrit !";
-        require ('app/vues/vueEntete.php');
-        require ('app/vues/vueHome.php');
+        require RACINE . '/vues/vueEntete.php';
+        require RACINE . '/vues/vueHome.php';
     }
     } else {
         // Si les données n'ont pas été soumises via le formulaire
@@ -83,8 +83,8 @@ if (isset($_POST['email'])) {
             $titre = "Inscription confirmée";
             //
         
-            require ('app/vues/vueEntete.php');
-            require ('app/vues/vueHome.php');
+            require RACINE . '/vues/vueEntete.php';
+            require RACINE . '/vues/vueHome.php';
 }
         
 ?>

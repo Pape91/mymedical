@@ -1,6 +1,6 @@
 <?php
 
-    include_once RACINE . "../modele/bd.ajoutSymptome.php";
+    include_once RACINE . "/modele/bd.ajoutSymptome.php";
 
     use \Mymedical\modele;
 
@@ -9,8 +9,8 @@
         // Vérifie si le script courant est bien le contrôleur principal, sinon affiche une erreur
         die('Erreur : '.basename(__FILE__));
     }
-
-    include_once  'login.php';
+    //echo('ok');
+    include_once RACINE .  '/controleur/login.php';
     
     include_once __DIR__ . "/config.php";
 
@@ -24,7 +24,7 @@
 
     // Récupère l'identifiant de la déclaration depuis la requête GET
     $idDeclaration =  $_GET['id_declaration'];
-
+    echo ($idDeclaration);
     // Variables pour déterminer le rôle de l'utilisateur (médecin, administrateur, etc.)
     $idMedecin='';
     $estMedecin;
@@ -39,12 +39,12 @@
     else if( isset($_GET['estAdmin']) && $_GET['estAdmin']=="oui"){
         $estAdmin = true;
     }
-        
+    
     // Récupère les détails de la déclaration depuis la base de données
     $utilisateur = new \Mymedical\modele\Utilisateur();
     $declaration = $utilisateur->getDeclarationDetails($idDeclaration);
 
     // Inclut les vues pour l'en-tête et les détails de la déclaration
-    require ('app/vues/vueEntete.php');
-    require ('app/vues/vueDetailsDeclaration.php');
+    require RACINE . '/vues/vueEntete.php';
+    require RACINE . '/vues/vueDetailsDeclaration.php';
 ?>

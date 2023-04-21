@@ -4,7 +4,7 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-require_once './bd.php';
+require_once RACINE .'/modele/bd.php';
 
 
 

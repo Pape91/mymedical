@@ -1,7 +1,7 @@
 <?php
 
     // Inclure le fichier contenant la fonction permettant l'ajout d'un symptôme dans la base de données
-    include_once RACINE . "../modele/bd.ajoutSymptome.php";
+    include_once RACINE . "/modele/bd.ajoutSymptome.php";
 
     // Utiliser le namespace "modele" de l'application
     use \Mymedical\modele;
@@ -13,7 +13,7 @@
     }
 
     // Inclure le fichier contenant les fonctions de connexion
-    include_once  ('login.php');
+    include_once RACINE .  '/controleur/login.php';
 
     // Inclure le fichier de configuration
     include_once __DIR__ . "/config.php";
@@ -41,6 +41,7 @@
         if(isset($_POST[$res]) && $_POST[$res]=="oui"){
             $tabSymtomes[]=$listSymptomes[$i]["Id_symptome"];
         }
+        
 
     }
 
@@ -62,29 +63,29 @@
         if($user!=null){
 
             // Ajouter une déclaration dans la base de données et récupérer l'ID de la déclaration ajoutée
-            $res = $objDeclaration->addDeclaration($user["Id_utilisateur"], $autre);
+            $res = $objDeclaration->addDeclaration($user["Id_utilisateur"], $autre, $tabSymptomes);
 
             // Ajouter les symptômes cochés dans la déclaration
-            $objDeclaration->addDeclaration_symptome($res, $tabSymptomes);
+            //$objDeclaration->addDeclaration_symptome($res, $tabSymptomes);
 
             // Afficher un message de confirmation
             $message = "Votre déclaration a bien été prise en compte";
             
-            require ('app/vues/vueEntete.php');
-            require ('app/vues/vueDeclaration.php');
-            require ('app/vues/vueFooter.php');
+            require RACINE . '/vues/vueEntete.php';
+            require RACINE . '/vues/vueDeclaration.php';
+            require RACINE . '/vues/vueFooter.php';
 
         }
         else{
-            require ('app/vues/vueEntete.php');
-            require ('app/vues/vueHome.php');
-            require ('app/vues/vueFooter.php');
+            require RACINE . '/vues/vueEntete.php';
+            require RACINE . '/vues/vueDeclaration.php';
+            require RACINE . '/vues/vueFooter.php';
         }
     }
     else{
 
-        require ('app/vues/vueEntete.php');
-        require ('app/vues/vueDeclaration.php');
-        require ('app/vues/vueFooter.php');
+            require RACINE . '/vues/vueEntete.php';
+            require RACINE . '/vues/vueDeclaration.php';
+            require RACINE . '/vues/vueFooter.php';
     }
 ?>

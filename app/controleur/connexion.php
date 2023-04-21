@@ -10,12 +10,12 @@
     }
 
     // inclusion des fichiers nécessaires
-    require_once RACINE . "../modele/authentification.php";
-    include_once __DIR__ . "/config.php";
-    include_once RACINE . "../modele/bd.utilisateur.inc.php";
-    include_once RACINE . "../modele/bd.patient.php";
-    include_once RACINE . "../modele/bd.medecin.php";
-    include_once RACINE . "../modele/bd.admin.php";
+    require_once RACINE . "/modele/authentification.php";
+    //include_once __DIR__ . "/config.php";
+    include_once RACINE . "/modele/bd.utilisateur.inc.php";
+    include_once RACINE . "/modele/bd.patient.php";
+    include_once RACINE . "/modele/bd.medecin.php";
+    include_once RACINE . "/modele/bd.admin.php";
 
     // initialisation des objets nécessaires
     $aut = new \Mymedical\modele\Connexion();
@@ -54,33 +54,38 @@
     // si l'utilisateur est connecté, rediriger vers la page correspondante selon son rôle
     if ($formulaireOk && $aut->isLoggedOn()){
 
+        
+        $dis_url = $_SERVER['REQUEST_URI'];
+        $uri = trim(strtok($dis_url, '?'));
+        $hote =  'https://'.$_SERVER['SERVER_NAME'].$uri;
+
+        //$_SERVER['SERVER_NAME'];
         $role = $user["role"];
         if($role=="patient"){
 
             $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
-            include RACINE . "../vues/vuePatient.php";
-            header("Location: http://localhost/mymedical/?action=patient");
+            include RACINE . "/vues/vuePatient.php";
+            header("Location: ".$hote."?action=patient");
             exit();
         }
         else if($role=="admin"){
             $admin = $utilisateur->getAdminByIdUser($user['Id_utilisateur']);
-            include RACINE . "../vues/vueAdmin.php";
-            header("Location: http://localhost/mymedical/?action=admin");
-            exit();
+            include RACINE . "/vues/vueAdmin.php";
+            header("Location: ".$hote."?action=admin");           
+             exit();
         } else if($role=="medecin"){
 
             $medecin = $utilisateur->getMedecinByIdUser($user['Id_utilisateur']);
-            include RACINE . "../vues/vueMedecin.php";
-            header("Location: http://localhost/mymedical/?action=medecin");
-            exit();
+            include RACINE . "/vues/vueMedecin.php";
+            header("Location: ".$hote."?action=medecin");           
+             exit();
         }
     }
     else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
         // appel du script de vue 
         $formulaireOk=false;
         $titre = "authentification";
-        include RACINE . "../vues/vueEntete.php";
-        include RACINE . "../vues/vueHome.php";
+        include RACINE . "/vues/vueHome.php";
         
         
         echo $aut->isLoggedOn();

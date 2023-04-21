@@ -15,7 +15,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 }
 
 // inclusion du fichier de login
-include_once  ('login.php');
+include_once RACINE . '/controleur/login.php';
 
 // inclusion des fichiers pour l'authentification et les fonctions de base de données pour les utilisateurs
 require_once RACINE . "/modele/authentification.php";
@@ -33,12 +33,12 @@ if ($con->isLoggedOn()){
     $listDeclarations = $utilisateur->getListDeclarationPatient($user['Id_utilisateur']);
     $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
     // appel du script de vue qui permet de gérer l'affichage des données du patient
-    include RACINE . "../vues/vuePatient.php";
-    require ('app/vues/vueFooter.php');
+    include RACINE . "/vues/vuePatient.php";
+    require RACINE .'/vues/vueFooter.php';
     
 } else {
     // si l'utilisateur n'est pas connecté, on affiche seulement l'entête
-    include RACINE . "../vues/vueEntete.php";
+    include RACINE . "/vues/vueEntete.php";
 }
 
 ?>

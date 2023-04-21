@@ -13,7 +13,7 @@
         die('Erreur : '.basename(__FILE__));
     }
 
-    include_once  ('login.php');
+    include_once RACINE . '/controleur/login.php';
     include_once __DIR__ . "/config.php";
 
 

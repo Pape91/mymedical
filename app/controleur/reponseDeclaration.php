@@ -1,7 +1,7 @@
 <?php
 
     // Inclusion du fichier bd.ajoutSymptome.php
-    include_once RACINE . "../modele/bd.ajoutSymptome.php";
+    include_once RACINE . "/modele/bd.ajoutSymptome.php";
 
     use \Mymedical\modele;
 
@@ -11,7 +11,7 @@
         die('Erreur : '.basename(__FILE__));
     }
 
-    include_once ('login.php');
+    include_once RACINE . '/controleur/login.php';
 
     // Inclusion du fichier de configuration config.php
     include_once __DIR__ . "/config.php";
@@ -47,7 +47,12 @@
     $message = "Déclaration répondue avec succès !";
 
     // Redirection vers la page d'accueil des médecins
-    header("Location: http://localhost/mymedical/?action=medecin");
+    
+    $dis_url = $_SERVER['REQUEST_URI'];
+    $uri = trim(strtok($dis_url, '?'));
+    $hote =  'https://'.$_SERVER['SERVER_NAME'].$uri;
+
+    header("Location: ".$hote."?action=medecin");
     exit();
    
 ?>

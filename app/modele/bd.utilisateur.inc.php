@@ -2,7 +2,7 @@
 
 namespace Mymedical\modele;
 
-include_once "bd.php";
+include_once RACINE . "/modele/bd.php";
 use Mymedical\modele\bd;
 use PDO;
 

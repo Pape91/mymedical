@@ -10,7 +10,7 @@
     }
 
     // inclusion du script pour l'authentification
-    require_once RACINE . "../modele/authentification.php";
+    require_once RACINE . "/modele/authentification.php";
 
     // inclusion du fichier de configuration
     include_once __DIR__ . "/config.php";
@@ -23,7 +23,10 @@
          $aut->logout();
 
     // redirection vers la page d'accueil
-    header("Location: http://localhost/mymedical");
+    $dis_url = $_SERVER['REQUEST_URI'];
+    $uri = trim(strtok($dis_url, '?'));
+    $hote =  'https://'.$_SERVER['SERVER_NAME'].$uri;
+    header("Location: ".$hote);
     exit();
 
 ?>
