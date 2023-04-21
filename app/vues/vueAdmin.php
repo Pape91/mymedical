@@ -1,5 +1,4 @@
-<?php require ('vueEntete.php'); ?>
-    <link rel="stylesheet" href="../../static/css/style.css">
+<?php //require ('vueEntete.php'); ?>
     <main id="contenu" class="container">
         <div class="corps_patient">
             <div class="donnees">
@@ -14,7 +13,45 @@
                 <h2> Historique déclaration </h2>
             </div> -->
         </div>
-        <form action=".?action=ajoutSymptome" method="POST">
+        <div class="historique">
+                <h2> Historique déclaration </h2>
+
+                <?php if(isset($listDeclarations)){ 
+                    
+                    if( count($listDeclarations) === 0 ) echo '<span>Pas de déclaration</span>';
+
+                    else{
+                        ?>
+                        <div class="accordion">
+                        <?php    
+                        for ($i = 0; $i < count(($listDeclarations)); $i++) { 
+                            $res = $listDeclarations[$i];
+                    ?>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">Déclaration N°<?php echo $res['id_declaration']?></div>
+                                <div class="accordion-content">
+                                    <form>
+                                        <?php if($res['est_traitee']) {?>
+                                            <span class="traitee"> déclaration traitée
+                                        <?php } else {?>
+                                            <span class="non_traitee"> En cours de traitement  
+                                       <?php }?>
+                                        </span>
+
+                                        <div class="autre_symptom">Autres symptomes déclarés :<span><?php echo $res['autres']?></span></div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                       <?php } ?>
+                       </div>
+                    <?php } ?>
+                
+                <?php } ?>
+            </div>
+        <form action=".?action=admin" method="POST">
             <span>
                 <?php
                         if(isset($message)){
@@ -30,10 +67,5 @@
             </div>
         </form> 
     </main>
-
-    <scrip>
-
-
-    </scrip>
 </body>
 </html>

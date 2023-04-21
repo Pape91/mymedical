@@ -10,7 +10,7 @@
     }
 
     require_once RACINE . "../modele/authentification.php";
-    include_once __DIR__ . "/config.php";;
+    include_once __DIR__ . "/config.php";
 
 
      $aut = new \Mymedical\modele\Connexion();

@@ -26,11 +26,15 @@
 
     $idDeclaration =  $_GET['id_declaration'];
     $idMedecin='';
-    $estMedecin = false;
+    $estMedecin;
+    $estAdmin;
 
     if( isset($_GET['estMedecin']) && $_GET['estMedecin']=="oui"){
         $estMedecin = true;
         $idMedecin = $_GET['id_medecin'];
+    }
+    else if( isset($_GET['estAdmin']) && $_GET['estAdmin']=="oui"){
+        $estAdmin = true;
     }
         
 

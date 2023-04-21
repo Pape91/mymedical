@@ -21,6 +21,9 @@ class Declaration extends DbConnector{
             $date = $date->format('Y-m-d H:i:s');
             $est_traite=false;
            
+            if(isset($autres) && $autres)
+                $autres=null;
+
             $req->bindParam(':Id_patient', $Id_patient);
             $req->bindParam(':date_declaration',  $date);
             $req->bindParam(':est_traitee', $est_traite);

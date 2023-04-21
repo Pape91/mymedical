@@ -14,7 +14,7 @@
     }
 
     include_once  'login.php';
-    
+    include_once RACINE . "../modele/bd.ajoutSymptome.php";
     require_once RACINE . "/modele/authentification.php";
     require_once RACINE . "/modele/bd.utilisateur.inc.php";
 
@@ -26,12 +26,32 @@
         $utilisateur = new \Mymedical\modele\Utilisateur();
         $mailU = $con->getMailULoggedOn();
         $user = $utilisateur->getUtilisateurByMailU($mailU);
-        $listDeclarations = $utilisateur->getAllDeclarationNonTraitees();
-        $medecin = $utilisateur->getMedecinByIdUser($user['Id_utilisateur']);
+        $listDeclarations = $utilisateur->getAllDeclarationAvecAutres();
+        $admin = $utilisateur->getAdminByIdUser($user['Id_utilisateur']);
 
-        require ('app/vues/vueEntete.php');
-        require ('app/vues/vueMedecin.php');
-        require ('app/vues/vueFooter.php');
+        $message="";
+        if (isset($_POST['symptome'])) {
+            $symptome = $_POST["symptome"];
+    
+            $objSymptome = new \Mymedical\modele\Symptome();
+            $res = $objSymptome->getSymptomeByName($symptome);
+    
+            if(!$res){
+                
+                $objSymptome->addSymptome($symptome);
+    
+                $message="Le symptôme ".$symptome. " a été bien ajouté !";
+    
+            }else{
+               
+                $message="Le symptôme ".$symptome. " existe déjà!";
+    
+            }
+        }
+        
+        require ("app/vues/vueEntete.php");
+        require ("app/vues/vueAdmin.php");
+        require ("app/vues/vueFooter.php");
         
     } else {
 

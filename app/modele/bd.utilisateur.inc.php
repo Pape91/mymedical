@@ -141,9 +141,11 @@ class Utilisateur extends DbConnector {
         $resultat = array();
         try {
             $bdd = $this->dbConnect();
-            $req = $bdd->prepare("SELECT s.nom_symptome, di.reponse_declaration, di.date_reponse, d.est_traitee ,d.date_declaration, d.autres  FROM declaration_symptomes ds 
+            $req = $bdd->prepare("SELECT di.Id_medecin, u.nom, u.prenom, s.nom_symptome, di.reponse_declaration, di.date_reponse, d.est_traitee ,d.date_declaration, d.autres  FROM declaration_symptomes ds 
                     INNER JOIN declaration d 
                         ON d.id_declaration = ds.Id_declaration 
+                    INNER JOIN Utilisateur u 
+                        ON u.Id_utilisateur = d.id_patient
                     INNER JOIN symptomes_type s 
                         ON s.Id_symptome = ds.Id_symptome  
                         INNER JOIN diagnostic di  
@@ -159,13 +161,48 @@ class Utilisateur extends DbConnector {
                 $resultat[] = $ligne;
                 $ligne = $req->fetch(PDO::FETCH_ASSOC);
             }
+
+            if(isset($resultat)){
+
+                if($resultat[0]['Id_medecin']){
+                    $req1 = $bdd->prepare("SELECT * FROM utilisateur where Id_utilisateur=:Id_medecin");
+                    $req1->bindValue(':Id_medecin', $resultat[0]['Id_medecin']);
+                    $req1->execute();
+
+                    $ligne1 = $req1->fetch(PDO::FETCH_ASSOC);
+                    
+                    $resultat[0]['nomMedecin']=$ligne1['nom'];
+                    $resultat[0]['prenomMedecin']=$ligne1['prenom'];
+                }
+            }
         } catch (PDOException $e) {
             die( "Erreur !: " . $e->getMessage() );
         }
         return $resultat;
     }
 
+    public function getAllDeclarationAvecAutres(){
 
+        $resultat = array();
+
+        try {
+            $bdd = $this->dbConnect();
+            $req = $bdd->prepare("SELECT * FROM declaration WHERE autres is not null ");
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+
+            while ($ligne && $ligne['autres']) {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+            
+        } catch (PDOException $e) {
+            die( "Erreur !: " . $e->getMessage() );
+        }
+        return $resultat;
+
+    }
         public function getAllDeclarationNonTraitees(){
 
             $resultat = array();

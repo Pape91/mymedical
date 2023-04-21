@@ -56,9 +56,9 @@
             exit();
         }
         else if($role=="admin"){
-
+            $admin = $utilisateur->getAdminByIdUser($user['Id_utilisateur']);
             include RACINE . "../vues/vueAdmin.php";
-            header("Location: http://localhost/mymedical/?action=ajoutSymptome");
+            header("Location: http://localhost/mymedical/?action=admin");
             exit();
         } else if($role=="medecin"){
 

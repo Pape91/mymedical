@@ -34,7 +34,7 @@ if ($con->isLoggedOn()){
     require ('app/vues/vueFooter.php');
     
 } else {
-    $titre = "Mon profil";
+    
     include RACINE . "../vues/vueEntete.php";
 }
 

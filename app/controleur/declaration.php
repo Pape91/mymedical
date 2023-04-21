@@ -36,7 +36,7 @@
     }
 
     $autre="";
-    //autres symtomes
+    //autres symptomes
     if(isset($_POST["autre"]))
         $autre= $_POST["autre"];
 
