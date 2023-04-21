@@ -1,7 +1,7 @@
 <?php
 
     /**
-    *	Controleur secondaire : connexion 
+    *   Controleur secondaire : connexion 
     */
 
     if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
@@ -9,7 +9,7 @@
         die('Erreur : '.basename(__FILE__));
     }
 
-
+    // inclusion des fichiers nécessaires
     require_once RACINE . "../modele/authentification.php";
     include_once __DIR__ . "/config.php";
     include_once RACINE . "../modele/bd.utilisateur.inc.php";
@@ -17,18 +17,22 @@
     include_once RACINE . "../modele/bd.medecin.php";
     include_once RACINE . "../modele/bd.admin.php";
 
-     // traitement si necessaire des donnees recuperees
-     $aut = new \Mymedical\modele\Connexion();
-     $utilisateur = new \Mymedical\modele\Utilisateur();
- 
-     if($aut->isLoggedOn())
-         $aut->logout();
+    // initialisation des objets nécessaires
+    $aut = new \Mymedical\modele\Connexion();
+    $utilisateur = new \Mymedical\modele\Utilisateur();
+
+    // vérification si l'utilisateur est déjà connecté, le déconnecter dans ce cas
+    if($aut->isLoggedOn())
+        $aut->logout();
 
     $formulaireOk = true;
-    if (isset($_POST["email"]) && isset($_POST["password"])){
-        $email=$_POST["email"];
-        $mdpU=$_POST["password"];
 
+    // si les informations de connexion ont été soumises
+    if (isset($_POST["email"]) && isset($_POST["password"])){
+        $email=htmlspecialchars($_POST["email"]);
+        $mdpU=htmlspecialchars($_POST["password"]);
+
+        // vérifier les informations de connexion
         $aut->login($email,$mdpU);
     }
     else
@@ -39,14 +43,17 @@
         $formulaireOk=false;
     }
 
+    // récupérer les informations de l'utilisateur correspondant à l'email fourni
     $user = $utilisateur->getUtilisateurByMailU($email);
+
+    // si le formulaire a été soumis mais l'utilisateur n'existe pas, le formulaire est invalide
     if($formulaireOk && !$user){
             $formulaireOk=false;
     }
 
-    if ($formulaireOk && $aut->isLoggedOn()){ // si l'utilisateur est connecté on redirige vers le controleur patient
+    // si l'utilisateur est connecté, rediriger vers la page correspondante selon son rôle
+    if ($formulaireOk && $aut->isLoggedOn()){
 
-        
         $role = $user["role"];
         if($role=="patient"){
 
@@ -72,8 +79,8 @@
         // appel du script de vue 
         $formulaireOk=false;
         $titre = "authentification";
-       include RACINE . "../vues/vueEntete.php";
-       include RACINE . "../vues/vueHome.php";
+        include RACINE . "../vues/vueEntete.php";
+        include RACINE . "../vues/vueHome.php";
         
         
         echo $aut->isLoggedOn();

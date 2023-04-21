@@ -8,6 +8,8 @@
 function redirigeVers($action="defaut") {
 	if($action == "") $action = "defaut";
     $lesActions = array();
+
+    // Tableau associatif des actions avec leur correspondance vers les fichiers
     $lesActions["defaut"] = "vueHome.php";
     $lesActions["inscription"] = "inscription.php";
     $lesActions["pre_inscription"] = "pre_inscription.php";
@@ -23,10 +25,10 @@ function redirigeVers($action="defaut") {
     $lesActions["logout"] = "logout.php";
 
 
-
+    // Identifier l'action correspondante
 	$controler_id = $lesActions[$action];
 
-	//si le fichier n'existe pas :
+	// Retourner le fichier correspondant à l'action ou la page par défaut si l'action n'existe pas
 	if(! file_exists(__DIR__ . '/'. $controler_id) ) die("Le fichier : " . $controler_id . " n'existe pas !");
 
 	//si la clé "action" existe dans notre tableau "lesActions" :

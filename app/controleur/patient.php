@@ -4,6 +4,7 @@
 *	Controleur secondaire : monProfil
 */
 
+// inclusion du fichier contenant les fonctions de base de données pour les utilisateurs
 include_once RACINE . "../modele/bd.utilisateur.inc.php";
 
 use \mymedical\modele;
@@ -13,28 +14,30 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     die('Erreur : '.basename(__FILE__));
 }
 
+// inclusion du fichier de login
 include_once  ('login.php');
 
+// inclusion des fichiers pour l'authentification et les fonctions de base de données pour les utilisateurs
 require_once RACINE . "/modele/authentification.php";
 require_once RACINE . "/modele/bd.utilisateur.inc.php";
 
-// recuperation des donnees GET, POST, et SESSION
-
+// récupération des données GET, POST, et SESSION
+// création d'un objet connexion pour gérer l'authentification
 $con = new \Mymedical\modele\Connexion();
-// appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
+
+// appel des fonctions permettant de récupérer les données utiles à l'affichage si l'utilisateur est connecté
 if ($con->isLoggedOn()){
     $utilisateur = new \Mymedical\modele\Utilisateur();
     $mailU = $con->getMailULoggedOn();
     $user = $utilisateur->getUtilisateurByMailU($mailU);
     $listDeclarations = $utilisateur->getListDeclarationPatient($user['Id_utilisateur']);
     $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
-    // appel du script de vue qui permet de gerer l'affichage des donnees
-    // include RACINE . "../vues/entete.php";
+    // appel du script de vue qui permet de gérer l'affichage des données du patient
     include RACINE . "../vues/vuePatient.php";
     require ('app/vues/vueFooter.php');
     
 } else {
-    
+    // si l'utilisateur n'est pas connecté, on affiche seulement l'entête
     include RACINE . "../vues/vueEntete.php";
 }
 

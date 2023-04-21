@@ -1,5 +1,6 @@
 <?php //require ('vueEntete.php'); ?>
     <main id="contenu" class="container">
+        <h2 class="profil">Profil Admin</h2>
         <div class="corps_patient">
             <div class="donnees">
             <h2> Informations personnelles </h2>
@@ -9,10 +10,6 @@
                 <p> Mot de passe : ******</p>
                 <p> Numéro Professionnel : <?php echo $admin["numPro"]?></p>
             </div>
-            <!-- <div class="historique">
-                <h2> Historique déclaration </h2>
-            </div> -->
-        </div>
         <div class="historique">
                 <h2> Historique déclaration </h2>
 
@@ -59,6 +56,7 @@
                         }
                 ?>
             </span>
+        </div>
             
             <div class="declaration">
                 <h4>Ajouter de nouveaux symptômtes</h4>

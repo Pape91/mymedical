@@ -2,7 +2,7 @@
 <main id="contenu" class="container">
     
     <div class="titre_declaration">
-        <h1>Déclaration de symptômes</h1>
+        <h2>Déclaration de symptômes</h2>
     </div>
     <form class="form-declaration" action=".?action=declaration" method="POST">
         <div id="symtomes">

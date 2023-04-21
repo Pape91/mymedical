@@ -1,0 +1,14 @@
+### Forbid access 
+
+Options -Indexes
+
+RewriteEngine On
+
+#Interdire l'acces aux dossiers :
+RewriteRule ^(app) - [R=403,L]
+
+#Interdire l'acces au fichier .env :
+<FilesMatch "(.env|.gitignore|composer.json|composer.lock|README.md)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

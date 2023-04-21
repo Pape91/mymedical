@@ -1,20 +1,5 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>inscription</title>
-  </head>
-  <body>
-    <header id="bandeau" class="container">
-      <div class="titre">
-        <h1>My medical</h1>
-      </div>
-    </header> -->
-<?php
 
+<?php
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
   // Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
     die('Erreur : '.basename(__FILE__));
@@ -24,9 +9,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     <?php require ('vueEntete.php'); ?>
     
     <main id="contenu" class="container">
-      <link rel="stylesheet" href="../../static/css/style.css">
       <div class="formulaire">
-       
         <form class="form-inscription" action="./?action=inscription" method="POST">
             <h3>Mes informations personelles</h3>
               <span id="alerte">

@@ -6,7 +6,7 @@ namespace Mymedical\modele;
 use Mymedical\modele\bd;
 use PDO;
 
-// classes Patient
+// classe Symptômes
 
 class Symptome extends DbConnector {
 

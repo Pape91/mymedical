@@ -9,7 +9,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 ?>
 <main id="contenu" class="container">
     <div class="bloc">
-            <div class="image1"><img src="static/images/Capt.JPG" alt=""></div>
+            <div class="home-image"><img src="static/images/home-image.JPG" alt="home-image"></div>
             <div class="formulaire">
             <span>
                 <?php
@@ -24,8 +24,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
             </span>
             <h3>Vous n'êtes pas encore inscrit?</h3>
             <a href="./?action=pre_inscription">créer un espace utilisateur</a>
-                <form action="./?action=connexion" method="POST">
-                    
+                <form action="./?action=connexion" method="POST">  
                     <label for="email" >E-mail :</label>
                     <input type="email" id="email" name="email" required>
                     <label for="password">Mot de passe :</label>

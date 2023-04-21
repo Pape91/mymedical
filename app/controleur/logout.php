@@ -9,16 +9,20 @@
         die('Erreur : '.basename(__FILE__));
     }
 
+    // inclusion du script pour l'authentification
     require_once RACINE . "../modele/authentification.php";
+
+    // inclusion du fichier de configuration
     include_once __DIR__ . "/config.php";
 
+    // création d'une instance de la classe Connexion
+    $aut = new \Mymedical\modele\Connexion();
 
-     $aut = new \Mymedical\modele\Connexion();
- 
-     if($aut->isLoggedOn())
+    // vérification si l'utilisateur est connecté et déconnexion
+    if($aut->isLoggedOn())
          $aut->logout();
 
-
+    // redirection vers la page d'accueil
     header("Location: http://localhost/mymedical");
     exit();
 

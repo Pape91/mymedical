@@ -24,6 +24,7 @@
     --fond-bleu: #107ACA;
     --fond-blanc:#fff;
     --texte-blanc:#FFF;
+    --texte-gris:#444343;
     --texte-noir:#000;
 }
 
@@ -43,8 +44,8 @@ a{
 }
 
 #corps{
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   width: 80%;
   margin: auto;
   padding: 10px;
@@ -201,6 +202,7 @@ button[type="submit"]:hover{
 /* ===========================Vue page patient============================== */
 .container h2{
   text-align: center;
+  color: var(--texte-gris);
 }
 
 .corps_patient{
@@ -218,6 +220,7 @@ button[type="submit"]:hover{
     text-align: initial;
     width: 100%;
 }
+
 #symtomes li::marker{
   padding: 10px;
 }
@@ -236,7 +239,9 @@ button[type="submit"]:hover{
   padding: 3px 0 0 30px;
 }
 .declaration{
-  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   margin : 20px 0;
 }
@@ -336,6 +341,7 @@ button[type="submit"] {
 }
 
 /* =========================Accordéon======================== */
+
 .accordion {
   margin-top: 20px;
   border: 1px solid var(--fond-bleu);

@@ -112,7 +112,43 @@ class Utilisateur extends DbConnector {
         return $resultat;
     }
 
+    public function updateUtilisateur($email, $mdpU, $role, $prenom, $nom, $genre, $dateN) {
+        try {
+            $bdd = $this->dbConnect();
+            
+            $mdpUCrypt = crypt($mdpU, "sel");
+            $req = $bdd->prepare("UPDATE utilisateur SET email=:email, mot_de_passe=:mot_de_passe, role=:role,
+            prenom=:prenom, nom=:nom, genre=:genre, date_de_naissance=:date_de_naissance WHERE Id_utilisateur=:Id_utilisateur");
 
+            $req->bindParam(':email', $email);
+            $req->bindParam(':mot_de_passe', $mdpUCrypt);
+            $req->bindParam(':role', $role);
+            $req->bindParam(':prenom', $prenom);
+            $req->bindParam(':nom', $nom);
+            $req->bindParam(':genre', $genre);
+            $req->bindParam(':date_de_naissance', $dateN);
+            
+            $resultat = $req->execute();
+        } catch (PDOException $e) {
+            die("Erreur !: " . $e->getMessage());
+        }
+        return $resultat;
+    }
+    
+    public function deleteUtilisateur($Id_utilisateur) {
+        try {
+            $bdd = $this->dbConnect();
+            
+            $req = $bdd->prepare("DELETE FROM utilisateur WHERE Id_utilisateur=:Id_utilisateur");
+            $req->bindParam(':id', $id);
+            
+            $resultat = $req->execute();
+        } catch (PDOException $e) {
+            die("Erreur !: " . $e->getMessage());
+        }
+        return $resultat;
+    }
+    
     public function getListDeclarationPatient($id_patient){
 
         $resultat = array();
@@ -136,6 +172,7 @@ class Utilisateur extends DbConnector {
     }
 
     //deatils déclaration d'un patient
+    
     public function getDeclarationDetails($id_declaration){
 
         $resultat = array();
