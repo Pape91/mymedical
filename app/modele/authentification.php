@@ -73,19 +73,24 @@ class Connexion extends DbConnector {
 
     // Cette fonction permet de savoir si l'utilisateur est connecté ou pas
     function isLoggedOn() {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        $ret = false;
-          
-        if (isset($_SESSION["email"])) {
-            $user = new \Mymedical\modele\Utilisateur();
-            $util = $user->getUtilisateurByMailU($_SESSION["email"]);
 
-            if ($util["email"] == $_SESSION["email"] && $util["mot_de_passe"] == $_SESSION["mot_de_passe"]) {
-                $ret = true;
+        $ret = false;
+        try{
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+              
+            if (isset($_SESSION["email"])) {
+                $user = new \Mymedical\modele\Utilisateur();
+                $util = $user->getUtilisateurByMailU($_SESSION["email"]);
+    
+                if ($util["email"] == $_SESSION["email"] && $util["mot_de_passe"] == $_SESSION["mot_de_passe"]) {
+                    $ret = true;
+                }
             }
         }
+        catch(Exception $error){}
+
         return $ret;
     }
 }

@@ -43,7 +43,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
               <option value="admin">Admin</option>
             </select>
               <label id="libelle_role">numéro sécurité sociale</label>
-              <input type="text" id="numero_role" name="num" required>
+              <input type="text" id="numero_role" name="num" inputmode="numeric" pattern="\d*" required>
             <button type="submit">S'inscrire</button>
           </form>
     </main>

@@ -396,11 +396,6 @@ button[type="submit"] {
   input[type="password"] {
   width: 80%;
 }
-  #corps{
-    /* width: 100%; */
-    /* padding: 0; */
-    /* margin-top: 17%; */
-  }
 
   .titre h1 {
     font-size: 1.5rem;
@@ -413,6 +408,7 @@ button[type="submit"] {
 
   .description {
     font-size: 1rem;
+    text-align: justify;
   }
 
   #contenu .home-image {

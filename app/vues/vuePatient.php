@@ -39,6 +39,7 @@
                                         </span>
 
                                     <a href="?action=detailsDeclarationPatient&id_declaration=<?php echo $res['id_declaration']?>">Voir</a>
+                                    <br><a href="?action=patient&id_declaration=<?php echo $res['id_declaration']?>"  onclick="return  confirm('Voulez-vous supprimer cette déclaration')"><i class="fas fa-trash fa-xs"></i></a>
                                     </form>
                                 </div>
                             </div>

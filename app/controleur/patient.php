@@ -28,6 +28,13 @@ $con = new \Mymedical\modele\Connexion();
 // appel des fonctions permettant de récupérer les données utiles à l'affichage si l'utilisateur est connecté
 if ($con->isLoggedOn()){
     $utilisateur = new \Mymedical\modele\Utilisateur();
+    if(isset($_GET['id_declaration'])){
+        $idDeclaration =  $_GET['id_declaration'];
+
+        $utilisateur->deleteDeclaration($idDeclaration);
+    }
+    
+    $utilisateur = new \Mymedical\modele\Utilisateur();
     $mailU = $con->getMailULoggedOn();
     $user = $utilisateur->getUtilisateurByMailU($mailU);
     $listDeclarations = $utilisateur->getListDeclarationPatient($user['Id_utilisateur']);

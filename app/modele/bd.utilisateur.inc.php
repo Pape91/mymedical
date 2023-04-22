@@ -12,6 +12,7 @@ class Utilisateur extends DbConnector {
 
     public function getUtilisateurs() {
 
+        $resultat;
         try {
             $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT * FROM utilisateur");
@@ -30,6 +31,7 @@ class Utilisateur extends DbConnector {
 
     public function getUtilisateurByMailU($email) {
 
+        $resultat;
         try {
             $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT * FROM utilisateur WHERE email=:email");
@@ -45,6 +47,7 @@ class Utilisateur extends DbConnector {
 
     public function getPatientByIdUser($idUser) {
 
+        $resultat;
         try {
             $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT * FROM patients WHERE Id_utilisateur=:id_patient");
@@ -61,6 +64,7 @@ class Utilisateur extends DbConnector {
 
     public function getMedecinByIdUser($idUser) {
 
+        $resultat;
         try {
             $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT * FROM medecin WHERE Id_utilisateur=:Id_medecin");
@@ -75,6 +79,7 @@ class Utilisateur extends DbConnector {
     }
     public function getAdminByIdUser($idUser) {
 
+        $resultat;
         try {
             $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT * FROM admin WHERE Id_utilisateur=:Id_admin");
@@ -89,6 +94,7 @@ class Utilisateur extends DbConnector {
     }
 
     public function addUtilisateur($email, $mdpU, $role, $prenom, $nom, $genre, $dateN) {
+        $resultat;
         try {
             $bdd = $this->dbConnect();
 
@@ -113,6 +119,7 @@ class Utilisateur extends DbConnector {
     }
 
     public function updateUtilisateur($email, $mdpU, $role, $prenom, $nom, $genre, $dateN) {
+        $resultat;
         try {
             $bdd = $this->dbConnect();
             
@@ -135,14 +142,15 @@ class Utilisateur extends DbConnector {
         return $resultat;
     }
     
-    public function deleteUtilisateur($Id_utilisateur) {
+    public function deleteDeclaration($id_declaration) {
         try {
             $bdd = $this->dbConnect();
             
-            $req = $bdd->prepare("DELETE FROM utilisateur WHERE Id_utilisateur=:Id_utilisateur");
-            $req->bindParam(':id', $id);
+            $req = $bdd->prepare("DELETE FROM declaration WHERE id_declaration=:id_declaration");
+            $req->bindParam(':id_declaration', $id_declaration);
             
             $resultat = $req->execute();
+
         } catch (PDOException $e) {
             die("Erreur !: " . $e->getMessage());
         }

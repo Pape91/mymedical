@@ -45,21 +45,23 @@ if (isset($_POST['email'])) {
         $message = "";
 
         // Ajout d'un patient, d'un médecin ou d'un administrateur selon le rôle sélectionné
+        $retType;
         if ($role == "patient") {
             // créer une instance de la classe Patient
             $patient = new \Mymedical\modele\Patient();
-            $patient->addPatient($data_user["Id_utilisateur"], $num);
+            $retType=$patient->addPatient($data_user["Id_utilisateur"], $num);
+
         } else if ($role == "medecin") {
             $medecin = new \Mymedical\modele\Medecin();
-            $medecin->addMedecin($data_user["Id_utilisateur"], $num);
+            $retType=$medecin->addMedecin($data_user["Id_utilisateur"], $num);
         } else if ($role == "admin") {
             // créer une instance de la classe Admin
             $admin = new \Mymedical\modele\Admin();
-            $admin->addAdmin($data_user["Id_utilisateur"], $num);
+            $retType=$admin->addAdmin($data_user["Id_utilisateur"], $num);
         }
 
         // Si l'ajout a été effectué avec succès
-        if ($ret) {
+        if ($ret && $retType) {
             $inscrit = true;
         } else {
             $msg = "L'utilisateur n'a pas été enregistré.";
@@ -70,9 +72,11 @@ if (isset($_POST['email'])) {
         require RACINE . '/vues/vueEntete.php';
         require RACINE . '/vues/vueHome.php';
     }
-    } else {
+} else {
         // Si les données n'ont pas été soumises via le formulaire
         $msg = "Renseigner tous les champs...";
+        require RACINE . '/vues/vueEntete.php';
+        require RACINE . '/vues/vueHome.php';
     }
 
     // Si l'utilisateur a été inscrit avec succès
@@ -85,6 +89,6 @@ if (isset($_POST['email'])) {
         
             require RACINE . '/vues/vueEntete.php';
             require RACINE . '/vues/vueHome.php';
-}
+    }
         
 ?>

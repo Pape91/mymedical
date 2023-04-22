@@ -20,18 +20,13 @@
     // initialisation des objets nécessaires
     $aut = new \Mymedical\modele\Connexion();
     $utilisateur = new \Mymedical\modele\Utilisateur();
-
-    // vérification si l'utilisateur est déjà connecté, le déconnecter dans ce cas
-    if($aut->isLoggedOn())
-        $aut->logout();
-
+    
     $formulaireOk = true;
-
     // si les informations de connexion ont été soumises
     if (isset($_POST["email"]) && isset($_POST["password"])){
         $email=htmlspecialchars($_POST["email"]);
         $mdpU=htmlspecialchars($_POST["password"]);
-
+        
         // vérifier les informations de connexion
         $aut->login($email,$mdpU);
     }
@@ -46,13 +41,9 @@
     // récupérer les informations de l'utilisateur correspondant à l'email fourni
     $user = $utilisateur->getUtilisateurByMailU($email);
 
-    // si le formulaire a été soumis mais l'utilisateur n'existe pas, le formulaire est invalide
-    if($formulaireOk && !$user){
-            $formulaireOk=false;
-    }
 
     // si l'utilisateur est connecté, rediriger vers la page correspondante selon son rôle
-    if ($formulaireOk && $aut->isLoggedOn()){
+    if ($formulaireOk && $aut->isLoggedOn() && isset($user["role"])){
 
         
         $dis_url = $_SERVER['REQUEST_URI'];
@@ -78,17 +69,21 @@
             $medecin = $utilisateur->getMedecinByIdUser($user['Id_utilisateur']);
             include RACINE . "/vues/vueMedecin.php";
             header("Location: ".$hote."?action=medecin");           
-             exit();
+            exit();
+        }else{
+
+            $formulaireOk=false;
+            $titre = "authentification";
+            require RACINE . "/vues/vueEntete.php";
+            include RACINE . "/vues/vueHome.php";
         }
     }
     else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
         // appel du script de vue 
         $formulaireOk=false;
         $titre = "authentification";
+        require RACINE . "/vues/vueEntete.php";
         include RACINE . "/vues/vueHome.php";
-        
-        
-        echo $aut->isLoggedOn();
     }
 
 ?>
