@@ -5,7 +5,7 @@
 */
 
 // inclusion du fichier contenant les fonctions de base de données pour les utilisateurs
-include_once RACINE . "../modele/bd.utilisateur.inc.php";
+include_once RACINE . "/modele/bd.utilisateur.inc.php";
 
 use \mymedical\modele;
 

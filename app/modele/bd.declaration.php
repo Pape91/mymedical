@@ -21,7 +21,8 @@ class Declaration extends DbConnector{
             $date = $date->format('Y-m-d H:i:s');
             $est_traite=false;
            
-            if(isset($autres) && $autres)
+            $autres = trim($autres);
+            if(trim($autres)=='')
                 $autres=null;
 
             $req->bindParam(':Id_patient', $Id_patient);
@@ -52,7 +53,7 @@ class Declaration extends DbConnector{
         return $resultat;
     }
 
-    public function addDiagnostic($Id_diagnostic, $reponse, $idMedecin, $listSymptome){
+    public function addDiagnostic($Id_diagnostic, $reponse, $idMedecin){
         try {
             $bdd = $this->dbConnect();
 

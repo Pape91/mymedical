@@ -174,19 +174,20 @@ class Utilisateur extends DbConnector {
     //deatils déclaration d'un patient
     
     public function getDeclarationDetails($id_declaration){
-
+        
         $resultat = array();
         try {
             $bdd = $this->dbConnect();
-            $req = $bdd->prepare("SELECT di.Id_medecin, u.nom, u.prenom, s.nom_symptome, di.reponse_declaration, di.date_reponse, d.est_traitee ,d.date_declaration, d.autres  FROM declaration_symptomes ds 
-                    INNER JOIN declaration d 
-                        ON d.id_declaration = ds.Id_declaration 
-                    INNER JOIN Utilisateur u 
-                        ON u.Id_utilisateur = d.id_patient
-                    INNER JOIN symptomes_type s 
-                        ON s.Id_symptome = ds.Id_symptome  
-                    INNER JOIN diagnostic di  
-                        ON di.Id_declaration = d.id_declaration   
+            $req = $bdd->prepare("SELECT di.Id_medecin, u.nom, u.prenom, s.nom_symptome, di.reponse_declaration, di.date_reponse, d.est_traitee ,d.date_declaration, d.autres 
+                    FROM declaration_symptomes ds 
+                        INNER JOIN declaration d 
+                            ON d.id_declaration = ds.Id_declaration 
+                        INNER JOIN utilisateur u 
+                            ON u.Id_utilisateur = d.id_patient
+                        INNER JOIN symptomes_type s 
+                            ON s.Id_symptome = ds.Id_symptome  
+                        INNER JOIN diagnostic di  
+                            ON di.Id_declaration = d.id_declaration   
                     WHERE ds.Id_declaration=:id_declaration");
 
             $req->bindValue(':id_declaration', $id_declaration);
@@ -213,6 +214,7 @@ class Utilisateur extends DbConnector {
                 }
             }
         } catch (PDOException $e) {
+            echo "<script type='text/javascript'>alert('$e->getMessage()');</script>";
             die( "Erreur !: " . $e->getMessage() );
         }
         return $resultat;
@@ -224,7 +226,7 @@ class Utilisateur extends DbConnector {
 
         try {
             $bdd = $this->dbConnect();
-            $req = $bdd->prepare("SELECT * FROM declaration WHERE autres is not null ");
+            $req = $bdd->prepare("SELECT * FROM declaration WHERE autres is not null");
             $req->execute();
 
             $ligne = $req->fetch(PDO::FETCH_ASSOC);

@@ -382,7 +382,7 @@ button[type="submit"] {
 
 /* =======================Medias Querry================================ */
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 770px) {
 
   .formulaire {
     width: 100%;
@@ -390,6 +390,12 @@ button[type="submit"] {
   .corps_patient{
     display: block;
   }
+  input[type="text"], input[type="text"],
+  input[type="date"], input[type="genre"],
+  input[type="role"], input[type="email"],
+  input[type="password"] {
+  width: 80%;
+}
   #corps{
     /* width: 100%; */
     /* padding: 0; */
@@ -398,6 +404,7 @@ button[type="submit"] {
 
   .titre h1 {
     font-size: 1.5rem;
+    text-align: justify;
   }
 
   .titre h2 {
@@ -408,11 +415,8 @@ button[type="submit"] {
     font-size: 1rem;
   }
 
-  div.image-home{
-   display: none;
-  }
-  #contenu {
-    width: 90%;
+  #contenu .home-image {
+    display: none;
   }
   
 }

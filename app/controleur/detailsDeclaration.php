@@ -42,9 +42,8 @@
     
     // Récupère les détails de la déclaration depuis la base de données
     $utilisateur = new \Mymedical\modele\Utilisateur();
-    $declaration = $utilisateur->getDeclarationDetails($idDeclaration);
 
-    echo "ok";
+    $declaration = $utilisateur->getDeclarationDetails($idDeclaration);
 
     // Inclut les vues pour l'en-tête et les détails de la déclaration
     require RACINE . '/vues/vueEntete.php';

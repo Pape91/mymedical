@@ -5,7 +5,7 @@
     */
 
     // Inclusion du fichier contenant les fonctions pour manipuler la BD des utilisateurs
-    include_once RACINE . "../modele/bd.utilisateur.inc.php";
+    include_once RACINE . "/modele/bd.utilisateur.inc.php";
 
     // Importation de l'espace de noms "modele" pour éviter des conflits de noms
     use \mymedical\modele;

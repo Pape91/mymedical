@@ -8,7 +8,7 @@
     $reponse = $declaration[0]["reponse_declaration"];
     $nomPatient = $declaration[0]["nom"];
     $prenomPatient = $declaration[0]["prenom"];
-    $autre = $declaration[0]["autres"];
+    $autre = trim($declaration[0]["autres"]);
 
     $nomMedecin;
     $prenomMedecin;
@@ -57,7 +57,8 @@
         echo '<b>'.$ligne['nom_symptome'] .'</b>'?> 
         </li>
     <?php  } 
-    if(!empty($autre))
+    echo strlen($autre);
+    if(!empty($autre) && strlen($autre)>0)
         echo '<li>Autres symptômes : <b>'.$autre.'</b></li>';
     echo '</ul>';
     echo '</div>';
