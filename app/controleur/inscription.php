@@ -10,7 +10,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 }
 
 // Inclusion des fichiers nécessaires
-include_once __DIR__ . "/config.php";
+//include_once __DIR__ . "/config.php";
 include_once RACINE . "/modele/bd.utilisateur.inc.php";
 include_once RACINE . "/modele/bd.patient.php";
 include_once RACINE . "/modele/bd.medecin.php";
@@ -50,11 +50,14 @@ if (isset($_POST['email'])) {
             // créer une instance de la classe Patient
             $patient = new \Mymedical\modele\Patient();
             $retType=$patient->addPatient($data_user["Id_utilisateur"], $num);
-
+            
         } else if ($role == "medecin") {
+            // créer une instance de la classe Admin
+
             $medecin = new \Mymedical\modele\Medecin();
             $retType=$medecin->addMedecin($data_user["Id_utilisateur"], $num);
         } else if ($role == "admin") {
+
             // créer une instance de la classe Admin
             $admin = new \Mymedical\modele\Admin();
             $retType=$admin->addAdmin($data_user["Id_utilisateur"], $num);
@@ -64,7 +67,7 @@ if (isset($_POST['email'])) {
         if ($ret && $retType) {
             $inscrit = true;
         } else {
-            $msg = "L'utilisateur n'a pas été enregistré.";
+            $message = "L'utilisateur n'a pas été enregistré.";
         }
     } else {
         // Si l'utilisateur existe déjà dans la base de données
@@ -74,7 +77,7 @@ if (isset($_POST['email'])) {
     }
 } else {
         // Si les données n'ont pas été soumises via le formulaire
-        $msg = "Renseigner tous les champs...";
+        $message = "Renseigner tous les champs...";
         require RACINE . '/vues/vueEntete.php';
         require RACINE . '/vues/vueHome.php';
     }
@@ -83,9 +86,8 @@ if (isset($_POST['email'])) {
     if ($inscrit) {
             
             $message="Vous êtes inscrit avec succès";
+
             // appel du script de vue qui permet de gerer l'affichage des donnees
-            $titre = "Inscription confirmée";
-            //
         
             require RACINE . '/vues/vueEntete.php';
             require RACINE . '/vues/vueHome.php';

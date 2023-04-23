@@ -6,18 +6,19 @@ namespace Mymedical\modele;
 use Mymedical\modele\bd;
 use PDO;
 
-// classes Patient
+// classe Patient
 
 class Patient extends DbConnector {
 
-    public function addPatient($id_utilisateur, $numSecu) {
+    public function addPatient($Id_utilisateur, $numSecu) {
         try {
             $bdd = $this->dbConnect();
-            $req = $bdd->prepare("INSERT INTO patients (Id_utilisateur, numSecu) VALUES (:Id_utilisateur, :numSecu)");
+            $req = $bdd->prepare("INSERT INTO patients (numSecu, Id_utilisateur) VALUES ( :numSecu, :Id_utilisateur)");
             $req->bindParam(':numSecu', $numSecu);
-            $req->bindParam(':Id_utilisateur', $id_utilisateur);
-
+            $req->bindParam(':Id_utilisateur', $Id_utilisateur);
+             
             $resultat = $req->execute();
+
         } catch (PDOException $e) {
             die( "Erreur !: " . $e->getMessage() );
         }

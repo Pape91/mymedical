@@ -57,7 +57,7 @@
         echo '<b>'.$ligne['nom_symptome'] .'</b>'?> 
         </li>
     <?php  } 
-    echo strlen($autre);
+    //echo strlen($autre);
     if(!empty($autre) && strlen($autre)>0)
         echo '<li>Autres symptômes : <b>'.$autre.'</b></li>';
     echo '</ul>';
