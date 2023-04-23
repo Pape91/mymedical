@@ -6,7 +6,7 @@
         <div class="corps_patient">
             <div class="donnees">
                 <h2> Informations personnelles </h2>
-                <p> Prénom : <?php echo $user["prenom"]?></p>
+                <p> Prénom : <span><?php echo $user["prenom"]?></span></p>
                 <p> Nom de famille : <?php echo $user["nom"]?></p>
                 <p> Adresse mail : <?php echo $user["email"]?></p>
                 <p> Mot de passe : ******</p>
