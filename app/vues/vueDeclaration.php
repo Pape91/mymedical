@@ -9,7 +9,7 @@
         <?php
 
             if(isset($message)){?>
-                <span><?php echo $message ?></span>
+                <span class="message"><?php echo $message ?></span>
             <?php }
 
             if( count($listSymptomes) === 0 );
@@ -31,9 +31,8 @@
 
     <div id="autre_symptome">
         <p>Autes Symptomes</p>
-        <textarea id="texte_autre" name="autre">
-            
-            </textarea>
+        <textarea id="texte_autre" name="autre"></textarea>
+        
         </div>
         <button type="submit">Envoyer</button>
     </form>

@@ -291,6 +291,9 @@ a:hover {
 .retour_profil{
   text-align: center;
 }
+.message{
+  font-weight: bold;
+}
 .symtomes{
   padding: 3px 0 0 30px;
 }
@@ -423,10 +426,10 @@ button[type="submit"] {
   #symtomes .question, #autre_symptome p, #texte_autre{
     margin: 8px
 }
-#autre_symptome textarea {
+  #autre_symptome textarea {
   width: 100%;
-  
 }
+
 }
   
 
