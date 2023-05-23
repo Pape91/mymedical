@@ -15,11 +15,8 @@
     // Inclure le fichier contenant les fonctions de connexion
     include_once RACINE .  '/controleur/login.php';
 
-    // Inclure le fichier de configuration
-    include_once __DIR__ . "/config.php";
-
     // Inclure les fichiers contenant les classes "Authentification" et "Declaration"
-    require_once RACINE . "/modele/authentification.php";
+    require_once RACINE . "/modele/bd.authentification.php";
     require_once RACINE . "/modele/bd.declaration.php";
 
     // Instancier la classe "Declaration"

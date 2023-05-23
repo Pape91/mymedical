@@ -5,7 +5,7 @@
     */
 
     // Inclusion du fichier contenant les fonctions pour manipuler la BD des utilisateurs
-    include_once RACINE . "/modele/bd.utilisateur.inc.php";
+    include_once RACINE . "/modele/bd.utilisateur.php";
 
     // Importation de l'espace de noms "modele" pour éviter des conflits de noms
     use \mymedical\modele;
@@ -19,8 +19,8 @@
     include_once RACINE . '/controleur/login.php';
     
     // Inclusion des fichiers contenant les fonctions pour gérer l'authentification et la BD des utilisateurs
-    require_once RACINE . "/modele/authentification.php";
-    require_once RACINE . "/modele/bd.utilisateur.inc.php";
+    require_once RACINE . "/modele/bd.authentification.php";
+    require_once RACINE . "/modele/bd.utilisateur.php";
 
     // Récupération des données GET, POST et SESSION
 
@@ -47,7 +47,7 @@
     } else {
         // Si l'utilisateur n'est pas connecté, affichage de la page d'accueil
         require RACINE . '/vues/vueEntete.php';
-        require RACINE . '/vues/vueHome.php';
+        require RACINE . '/vues/vueConnexion.php';
         require RACINE . '/vues/vueEntete.php';
     }
 

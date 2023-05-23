@@ -1,8 +1,6 @@
 <?php
 
 namespace Mymedical\modele;
-
-// include_once "bd.php";
 use Mymedical\modele\bd;
 use PDO;
 

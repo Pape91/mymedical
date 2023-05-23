@@ -37,15 +37,6 @@
 body{
   font-family: 'poppinsregular';
   font-size: 18px;
-}
-
-a{
-    text-decoration: none;
-}
-
-#corps{
-  /* display: flex;
-  flex-direction: column; */
   width: 80%;
   margin: auto;
   padding: 10px;
@@ -53,23 +44,29 @@ a{
   padding-bottom: 5px;
 }
 
+a{
+  text-decoration: none;
+}
+ul{
+  list-style-type: none;
+}
 .container{
     max-width: 1200px;
     width: 100%;
     margin: 15px auto 0;
 }
 .container .bloc{
-  margin-top: 30px;
-  display: flex;
+  /* margin-top: 30px; */
+  /* display: flex; */
   text-align: center;
 }
-
-#tete {
+#bandeau{
   display: flex;
   justify-content: space-between;
-  
+  flex-wrap: wrap;
 }
-#tete h1{
+#bandeau h1{
+  /* width: 22%; */
   font-family: 'Oswald';
   color: var(--fond-bleu);
   font-size: 3rem;
@@ -88,7 +85,6 @@ a{
   font-size: 1.4rem;
   text-align: left;
   margin: 10px 0;
-  /* border-bottom: solid; */
 }
 
 .apropos a{
@@ -103,9 +99,60 @@ a{
   background-color: var(--fond-bleu);
   color: #FFF;
 }
+a {
+  display: inline-block;
+  background-color: var(--fond-bleu);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 1rem;
+}
+
+  a:hover {
+  color: #fff;
+  background: linear-gradient(45deg,#069792,#17c2bb);
+  transition:none; 
+} 
+/* ===================Menu====================== */
+#menuprincipal #burger{
+  text-align: right;
+  font-size: 3rem;
+  margin-right: 15px;
+  display: none;
+}
+.fa-bars{
+  color: var(--fond-bleu);
+  font-size: 2.5rem;
+}
+#bandeau #menuprincipal ul{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+#bandeau #menuprincipal ul li{
+  margin-left: 5%;
+}
+#bandeau #menuprincipal ul li a{
+  display: inline-block;
+  color: var(--fond-bleu);
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 1.25rem;
+}
+#bandeau #menuprincipal ul li a:hover{
+  color: #fff;
+  background: linear-gradient(45deg,#069792,#17c2bb);
+  transition:none; 
+}
 
 .formulaire{
-  width: 50%;
+  width: 55%;
   margin: auto;
   border-radius: 6px;
   background: var(--fond-bleu) 0% 0% no-repeat padding-box;
@@ -118,7 +165,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    /* margin-top: 20px; */
   }
   
 .reponse{
@@ -198,11 +245,15 @@ button[type="submit"]:hover{
   background: linear-gradient(45deg,#069792,#17c2bb);
   transition:none; 
 }
+.msg{
+  font-size: 1.5rem;
+}
 
 /* ===========================Vue page patient============================== */
 .container h2{
   text-align: center;
   color: var(--texte-gris);
+  margin: 10px;
 }
 
 .corps_patient{
@@ -257,22 +308,7 @@ button[type="submit"]:hover{
   margin: 30px;
 }
 
-a {
-  display: inline-block;
-  background-color: var(--fond-bleu);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-  font-size: 1rem;
-}
 
-a:hover {
-  color: #fff;
-  background: linear-gradient(45deg,#069792,#17c2bb);
-  transition:none; 
-}
 
 /* =========================vueDeclaration======================== */
 
@@ -292,6 +328,9 @@ a:hover {
   text-align: center;
 }
 .message{
+  text-align: center;
+  font-size: 1.5rem;
+  color: #26e726;
   font-weight: bold;
 }
 .symtomes{
@@ -332,8 +371,11 @@ a:hover {
 }
 
 /* Style pour le bouton d'envoi */
+.form-declaration button[type="submit"]{
+ margin: 10px;
+}
 button[type="submit"] {
-  margin: 10px;
+ 
   background-color: var(--fond-bleu);
   color: #fff;
   padding: 8px 20px;
@@ -386,7 +428,19 @@ button[type="submit"] {
 /* =======================Medias Querry================================ */
 
 @media screen and (max-width: 770px) {
-
+    #menuprincipal #burger{
+      display: block;
+  }
+  #bandeau #menuprincipal ul{
+      display: none;
+      margin-bottom: 15px;
+  }
+  #bandeau #menuprincipal ul li{
+      line-height: 3,2rem;
+  }
+  #bandeau #menuprincipal ul li a{
+      padding-bottom: 0;
+  }
   .formulaire {
     width: 100%;
   }

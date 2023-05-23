@@ -1,6 +1,4 @@
 
-    <?php require RACINE . '/vues/vueEntete.php'; ?>
-    <link rel="stylesheet" href="../../static/css/style.css">
     <main id="contenu" class="container">
         <h2 class="profil"> Profil Patient </h2>
         <div class="corps_patient">
@@ -56,13 +54,7 @@
         <a href=".?action=declaration">Déclarer</a>
     </div>  
     </main>
-    <script src="../../static/librairie/bootstrapp/js/accordeon.js"></script>
 
-</body>
-<?php //include('vues/vueFooter.php'); ?>
-</html>
-<?php //echo($user["nom"]) ;
 
-//echo($user["prenom"]) ;?> 
-    <?php //require ('vueFooter.php'); ?>
+
 

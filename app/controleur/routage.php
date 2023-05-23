@@ -6,11 +6,11 @@
 */
 
 function redirigeVers($action="defaut") {
-	if($action == "") $action = "defaut";
+	if($action == "" )$action = "defaut";
     $lesActions = array();
 
     // Tableau associatif des actions avec leur correspondance vers les fichiers
-    $lesActions["defaut"] = "vueHome.php";
+    $lesActions["defaut"] = "home.php";
     $lesActions["inscription"] = "inscription.php";
     $lesActions["pre_inscription"] = "pre_inscription.php";
     $lesActions["connexion"] = "connexion.php";
@@ -23,7 +23,8 @@ function redirigeVers($action="defaut") {
     $lesActions["detailsDeclarationPatient"] = "detailsDeclaration.php";
     $lesActions["reponseDeclaration"] = "reponseDeclaration.php";
     $lesActions["logout"] = "logout.php";
-
+    $lesActions["home"] = "home.php";
+    
 
     // Identifier l'action correspondante
 	$controler_id = $lesActions[$action];

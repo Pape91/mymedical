@@ -10,10 +10,7 @@
     }
 
     // inclusion du script pour l'authentification
-    require_once RACINE . "/modele/authentification.php";
-
-    // inclusion du fichier de configuration
-    include_once __DIR__ . "/config.php";
+    require_once RACINE . "/modele/bd.authentification.php";
 
     // création d'une instance de la classe Connexion
     $aut = new \Mymedical\modele\Connexion();

@@ -1,5 +1,4 @@
 
-    <link rel="stylesheet" href="../../static/css/style.css">
     <main id="contenu" class="container">
     <h2 class="profil"> Profil Medecin </h2>
         <div class="corps_patient">
@@ -45,7 +44,5 @@
             </div>
         </div>
     </main>
-    <script src="../../static/librairie/bootstrapp/js/accordeon.js"></script>
-
 </body>
 

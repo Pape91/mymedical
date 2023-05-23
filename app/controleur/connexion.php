@@ -10,9 +10,8 @@
     }
 
     // inclusion des fichiers nécessaires
-    require_once RACINE . "/modele/authentification.php";
-    //include_once __DIR__ . "/config.php";
-    include_once RACINE . "/modele/bd.utilisateur.inc.php";
+    require_once RACINE . "/modele/bd.authentification.php";
+    include_once RACINE . "/modele/bd.utilisateur.php";
     include_once RACINE . "/modele/bd.patient.php";
     include_once RACINE . "/modele/bd.medecin.php";
     include_once RACINE . "/modele/bd.admin.php";
@@ -21,6 +20,7 @@
     $aut = new \Mymedical\modele\Connexion();
     $utilisateur = new \Mymedical\modele\Utilisateur();
     
+    $typeUser = $_GET['typeUser'];
     $formulaireOk = true;
     // si les informations de connexion ont été soumises
     if (isset($_POST["email"]) && isset($_POST["password"])){
@@ -52,30 +52,30 @@
 
         //$_SERVER['SERVER_NAME'];
         $role = $user["role"];
-        if($role=="patient"){
+        if($role=="patient" && $typeUser=="patient"){
 
             $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
-            include RACINE . "/vues/vuePatient.php";
             header("Location: ".$hote."?action=patient");
             exit();
         }
-        else if($role=="admin"){
+        else if($role=="admin" && $typeUser=="gestionnaire"){
             $admin = $utilisateur->getAdminByIdUser($user['Id_utilisateur']);
-            include RACINE . "/vues/vueAdmin.php";
             header("Location: ".$hote."?action=admin");           
              exit();
-        } else if($role=="medecin"){
+        } else if($role=="medecin" && $typeUser=="medecin"){
 
             $medecin = $utilisateur->getMedecinByIdUser($user['Id_utilisateur']);
-            include RACINE . "/vues/vueMedecin.php";
             header("Location: ".$hote."?action=medecin");           
             exit();
+
         }else{
 
+            $aut->logout();
             $formulaireOk=false;
             $titre = "authentification";
             require RACINE . "/vues/vueEntete.php";
-            include RACINE . "/vues/vueHome.php";
+            require RACINE . "/vues/vueConnexion.php";
+            require RACINE . "/vues/vueFooter.php";
         }
     }
     else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
@@ -83,7 +83,9 @@
         $formulaireOk=false;
         $titre = "authentification";
         require RACINE . "/vues/vueEntete.php";
-        include RACINE . "/vues/vueHome.php";
+        require RACINE . "/vues/vueConnexion.php";
+        require RACINE . "/vues/vueFooter.php";
+
     }
 
 ?>

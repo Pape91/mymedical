@@ -8,7 +8,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 	// Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
     die('Erreur : '.basename(__FILE__));
 }
-include_once RACINE . "/modele/bd.utilisateur.inc.php";
+include_once RACINE . "/modele/bd.utilisateur.php";
 
 
 $inscrit = false;
@@ -31,8 +31,9 @@ if (isset($_POST["email"]) && isset($_POST["mot_de_passe"]) && isset($_POST["rol
 } else {
             // appel du script de vue qui permet de gerer l'affichage des donnees
             $titre = "Inscription ";
-            include RACINE . "/vues/entete.php";
+            include RACINE . "/vues/vueEntete.php";
             include RACINE . "/vues/vueInscription.php";
+            include RACINE . "/vues/vueFooter.php";
             
         }
 ?>

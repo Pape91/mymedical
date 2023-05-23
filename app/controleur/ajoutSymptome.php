@@ -14,7 +14,7 @@
     }
 
     include_once RACINE . '/controleur/login.php';
-    include_once __DIR__ . "/config.php";
+
 
 
 

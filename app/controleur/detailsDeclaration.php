@@ -9,12 +9,10 @@
         // Vérifie si le script courant est bien le contrôleur principal, sinon affiche une erreur
         die('Erreur : '.basename(__FILE__));
     }
-    //echo('ok');
+
     include_once RACINE .  '/controleur/login.php';
     
-    include_once __DIR__ . "/config.php";
-
-    require_once RACINE . "/modele/authentification.php";
+    require_once RACINE . "/modele/bd.authentification.php";
     require_once RACINE . "/modele/bd.declaration.php";
 
     $objDeclaration = new \Mymedical\modele\Declaration();

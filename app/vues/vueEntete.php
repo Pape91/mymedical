@@ -4,34 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./static/css/style.css">
     <title>My medical</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-    
-    <div id="corps"> 
         <header id="bandeau" class="container">
-        
-            <div id="tete">
-                <h1>My medical</h1>
-                <span class="apropos">
-                    <?php 
-                        require_once RACINE . "/modele/bd.utilisateur.inc.php";
 
+                <h1>My medical</h1>
+                    <?php 
+                        require_once RACINE . "/modele/bd.utilisateur.php";
+                        
                         // recuperation des donnees GET, POST, et SESSION
                         
                         $con = new \Mymedical\modele\Connexion();
                         $res=$con->isLoggedOn();
                         if(isset($res) && $res) {?>
+                        <span class="apropos">
                          <a href="?action=logout">Déconnexion</a>
+                         </span>
+                         <?php } else{?>
+
+                         <nav id="menuprincipal">        
+                             <div id="burger">
+                                 <i class="fas fa-bars"></i>
+                             </div>
+                             <ul>
+                                <li><a href="index.php">Accueil</a></li>
+                                <li><a href="index.php?action=home&type=patient">Patient</a></li>
+                                <li><a href="index.php?action=home&type=medecin">Medecin</a></li>
+                                <li><a href="index.php?action=home&type=gestionnaire">Gestionnaire</a></li>
+                                <li><a href="./?action=pre_inscription">S'inscrire</a></li>
+                             </ul>
+                         </nav> 
                          <?php  }?>
-                    <?php //else : ?>
-                    <!-- <a href="#">A&nbspPROPOS</a> -->
-                    <?php //endif; ?>
-                </span>
-            </div>
-            <div id="sous_titre"><h2>Consultation</h2></div>
+
             <div class="titre">
                 <p class="description">Le lorem ipsum est, en imprimerie, une suite 
                     de mots sans signification utilisée à titre provisoire pour 
@@ -39,7 +46,4 @@
                     dès qu'il est prêt ou que la mise en page est achevée. Généralement utilise
                     un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
             </div>
-                
-            
-           
-        </header>
+       </header>

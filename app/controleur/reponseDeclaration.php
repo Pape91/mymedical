@@ -17,7 +17,7 @@
     include_once __DIR__ . "/config.php";
 
     // Inclusion des fichiers nécessaires
-    require_once RACINE . "/modele/authentification.php";
+    require_once RACINE . "/modele/bd.authentification.php";
     require_once RACINE . "/modele/bd.declaration.php";
 
     // Création d'une instance de la classe Declaration

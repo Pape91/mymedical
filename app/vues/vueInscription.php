@@ -1,12 +1,3 @@
-
-<?php
-if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-  // Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
-    die('Erreur : '.basename(__FILE__));
-}
-
-?>
-    <?php require RACINE .'/vues/vueEntete.php'; ?>
     
     <main id="contenu" class="container">
       <div class="formulaire">
@@ -22,9 +13,9 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
               <label for="nom">Nom</label>
               <input type="text" id="nom" name="nom" required>
               <label for="email" >E-mail :</label>
-              <input type="email" id="email" name="email">
+              <input type="email" id="email" name="email" required>
               <label for="password">Mot de passe :</label>
-              <input type="password" id="password" name="mot_de_passe">
+              <input type="password" id="password" name="mot_de_passe" required>
               <label for="naissance">Date de naissance :</label>
               <input type="date" id="naissance" name="date_de_naissance" required>
             <label>Genre</label>
@@ -38,13 +29,13 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
             
             <label for="role">Rôle</label>
             <select id="role" name="role" required>
-              <option value="patient"selected>Patient</option>
+              <option value="patient" selected>Patient</option>
               <option value="medecin">Medecin</option>
               <option value="admin">Admin</option>
             </select>
               <label id="libelle_role">numéro sécurité sociale</label>
               <input type="text" id="numero_role" name="num" inputmode="numeric" pattern="\d*" required>
             <button type="submit">S'inscrire</button>
-          </form>
+        </form>
+      </div>
     </main>
-    <?php require ('app/vues/vueFooter.php'); ?>

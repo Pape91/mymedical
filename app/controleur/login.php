@@ -1,6 +1,6 @@
 <?php
 
-    require_once RACINE . "/modele/authentification.php";
+    require_once RACINE . "/modele/bd.authentification.php";
 
  
      $aut = new \Mymedical\modele\Connexion();

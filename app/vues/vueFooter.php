@@ -1,14 +1,9 @@
 <footer>
-        <!-- <div class="footer-copyright">
-                <p>&copy; 2023 My medical. Tous droits réservés.</p>
-        </div>
-        <div>
-            <a href="#">Mentions Légales</a>
-        </div> -->
 
+        <script src="static/librairie/js/burger.js"></script>
+        <script src="static/librairie/js/accordeon.js"></script>
+        <script src="static/librairie/js/inscription.js"></script>
+        
 </footer>
-<script src="static/librairie/bootstrapp/js/accordeon.js"></script>
-<script src="static/librairie/bootstrapp/js/inscription.js"></script>
-
 </body>
 </html>

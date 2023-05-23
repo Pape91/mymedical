@@ -4,8 +4,6 @@
     *	Controleur secondaire : monProfil
     */
 
-    include_once RACINE . "../modele/bd.utilisateur.inc.php";
-
     use \mymedical\modele;
 
     if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
@@ -15,8 +13,8 @@
 
     include_once  'login.php';
     include_once RACINE . "/modele/bd.ajoutSymptome.php";
-    require_once RACINE . "/modele/authentification.php";
-    require_once RACINE . "/modele/bd.utilisateur.inc.php";
+    require_once RACINE . "/modele/bd.authentification.php";
+    require_once RACINE . "/modele/bd.utilisateur.php";
 
     // recuperation des donnees GET, POST, et SESSION
 
@@ -56,8 +54,8 @@
     } else {
 
         require RACINE . '/vues/vueEntete.php';
-        require RACINE . '/vues/vueHome.php';
-        require RACINE . '/vues/vueEntete.php';
+        require RACINE . '/vues/vueConnexion.php';
+        
     }
 
 ?>

@@ -8,10 +8,10 @@ $dotenv->load();
 
 define("RACINE", dirname(__FILE__)."/app"); // enlever tous les fichiers config
 
-//ie(RACINE);
+
 //require __DIR__ . "/app/controleur/config.php";
 require RACINE . "/controleur/routage.php";
-require RACINE . "/modele/authentification.php";
+require RACINE . "/modele/bd.authentification.php";
 
 //$action=""
 
@@ -23,6 +23,8 @@ if (isset($_GET["action"])) {
 }
   else{
     require RACINE . '/vues/vueEntete.php';
-    require RACINE . '/vues/vueHome.php';
+    require RACINE . '/vues/vueAccueil.php';
+    require RACINE . "/vues/vueFooter.php";
+
   }
 ?>

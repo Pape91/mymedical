@@ -10,8 +10,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 }
 
 // Inclusion des fichiers nécessaires
-//include_once __DIR__ . "/config.php";
-include_once RACINE . "/modele/bd.utilisateur.inc.php";
+include_once RACINE . "/modele/bd.utilisateur.php";
 include_once RACINE . "/modele/bd.patient.php";
 include_once RACINE . "/modele/bd.medecin.php";
 include_once RACINE . "/modele/bd.admin.php";
@@ -24,14 +23,14 @@ $msg = "My Medical";
 if (isset($_POST['email'])) {
 
     // Récupération des données
-    $mailU = $_POST["email"];
-    $mdpU = $_POST["mot_de_passe"];
-    $role = $_POST["role"];
-    $genre = $_POST["genre"];
-    $prenom = $_POST["prenom"];
-    $nom = $_POST["nom"];
-    $dateN = $_POST["date_de_naissance"];
-    $num = $_POST["num"];
+    $mailU = htmlspecialchars($_POST["email"]);
+    $mdpU = htmlspecialchars($_POST["mot_de_passe"]);
+    $role = htmlspecialchars($_POST["role"]);
+    $genre = htmlspecialchars($_POST["genre"]);
+    $prenom = htmlspecialchars($_POST["prenom"]);
+    $nom = htmlspecialchars($_POST["nom"]);
+    $dateN = htmlspecialchars($_POST["date_de_naissance"]);
+    $num = htmlspecialchars($_POST["num"]);
    
     // Enregistrement des données dans la base de données
     $user = new \Mymedical\modele\Utilisateur();
@@ -73,13 +72,16 @@ if (isset($_POST['email'])) {
         // Si l'utilisateur existe déjà dans la base de données
         $message = "Vous êtes déjà inscrit !";
         require RACINE . '/vues/vueEntete.php';
-        require RACINE . '/vues/vueHome.php';
+        require RACINE . '/vues/vueConnexion.php';
+        require RACINE . '/vues/vueFooter.php';
     }
 } else {
         // Si les données n'ont pas été soumises via le formulaire
         $message = "Renseigner tous les champs...";
         require RACINE . '/vues/vueEntete.php';
-        require RACINE . '/vues/vueHome.php';
+        require RACINE . '/vues/vueConnexion.php';
+        require RACINE . '/vues/vueFooter.php';
+
     }
 
     // Si l'utilisateur a été inscrit avec succès
@@ -90,7 +92,9 @@ if (isset($_POST['email'])) {
             // appel du script de vue qui permet de gerer l'affichage des donnees
         
             require RACINE . '/vues/vueEntete.php';
-            require RACINE . '/vues/vueHome.php';
+            require RACINE . '/vues/vueConnexion.php';
+            require RACINE . '/vues/vueFooter.php';
+
     }
         
 ?>

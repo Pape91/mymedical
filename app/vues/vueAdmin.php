@@ -1,4 +1,3 @@
-<?php //require ('vueEntete.php'); ?>
     <main id="contenu" class="container">
         <h2 class="profil">Profil Admin</h2>
         <div class="corps_patient">
@@ -32,9 +31,10 @@
                                         <?php if($res['est_traitee']) {?>
                                             <span class="traitee"> déclaration traitée
                                         <?php } else {?>
+                                            </span>
                                             <span class="non_traitee"> En cours de traitement  
                                        <?php }?>
-                                        </span>
+                                            </span>
 
                                         <div class="autre_symptom">Autres symptomes déclarés :<span><?php echo $res['autres']?></span></div>
 
@@ -65,5 +65,3 @@
             </div>
         </form> 
     </main>
-</body>
-</html>
