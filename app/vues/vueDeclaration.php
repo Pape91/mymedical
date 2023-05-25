@@ -30,7 +30,7 @@
     </div>
 
     <div id="autre_symptome">
-        <p>Autes Symptomes</p>
+        <p>Autres Symptomes</p>
         <textarea id="texte_autre" name="autre"></textarea>
         
         </div>

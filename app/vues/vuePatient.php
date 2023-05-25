@@ -24,9 +24,9 @@
                         for ($i = 0; $i < count(($listDeclarations)); $i++) { 
                             $res = $listDeclarations[$i];
                     ?>
-                            
-                            <div class="accordion-item">
-                                <div class="accordion-header">Déclaration N°<?php echo $res['id_declaration']?></div>
+                            <?php $etat=""; if($res['est_traitee']) $etat='traitee'; ?>
+                            <div class="accordion-item  <?php echo $etat ?>">
+                                <div class="accordion-header <?php echo $etat ?>">Déclaration N°<?php echo $res['id_declaration']?></div>
                                 <div class="accordion-content">
                                     <form>
                                         <?php if($res['est_traitee']) {?>
@@ -36,8 +36,8 @@
                                        <?php }?>
                                         </span>
 
-                                    <a href="?action=detailsDeclarationPatient&id_declaration=<?php echo $res['id_declaration']?>">Voir</a>
-                                    <br><a href="?action=patient&id_declaration=<?php echo $res['id_declaration']?>"  onclick="return  confirm('Voulez-vous supprimer cette déclaration')"><i class="fas fa-trash fa-xs"></i></a>
+                                    <a  class="<?php echo $etat ?>" href="?action=detailsDeclarationPatient&id_declaration=<?php echo $res['id_declaration']?>">Voir</a>
+                                    <br><a  class="<?php echo $etat ?>" href="?action=patient&id_declaration=<?php echo $res['id_declaration']?>"  onclick="return  confirm('Voulez-vous supprimer cette déclaration')"><i class="fas fa-trash fa-xs"></i></a>
                                     </form>
                                 </div>
                             </div>

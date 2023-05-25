@@ -24,6 +24,10 @@ function redirigeVers($action="defaut") {
     $lesActions["reponseDeclaration"] = "reponseDeclaration.php";
     $lesActions["logout"] = "logout.php";
     $lesActions["home"] = "home.php";
+    $lesActions["mention"] = "mention.php";
+    $lesActions["rgpd"] = "rgpd.php";
+
+    
     
 
     // Identifier l'action correspondante

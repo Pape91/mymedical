@@ -23,6 +23,7 @@
 :root{
     --fond-bleu: #107ACA;
     --fond-blanc:#fff;
+    --fond-vert: #10ca2c;
     --texte-blanc:#FFF;
     --texte-gris:#444343;
     --texte-noir:#000;
@@ -56,22 +57,12 @@ ul{
     margin: 15px auto 0;
 }
 .container .bloc{
-  /* margin-top: 30px; */
-  /* display: flex; */
   text-align: center;
 }
 #bandeau{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-}
-#bandeau h1{
-  /* width: 22%; */
-  font-family: 'Oswald';
-  color: var(--fond-bleu);
-  font-size: 3rem;
-  text-transform: uppercase;
-  border-bottom: 5px solid;
 }
 
 #sous_titre h2{
@@ -84,7 +75,7 @@ ul{
   color: var(--fond-bleu);
   font-size: 1.4rem;
   text-align: left;
-  margin: 10px 0;
+  margin: 27px 0;
 }
 
 .apropos a{
@@ -109,12 +100,38 @@ a {
   transition: background-color 0.2s ease-in-out;
   font-size: 1rem;
 }
+a.traitee {
+  background-color: var(--fond-vert);
+}
 
-  a:hover {
+a:hover {
   color: #fff;
   background: linear-gradient(45deg,#069792,#17c2bb);
   transition:none; 
 } 
+#bandeau h1  a:hover {
+  color: var(--fond-bleu);
+  background:none;
+  transition:none; 
+} 
+#bandeau h1 a {
+  display: block;
+  background-color: var(--fond-blanc);
+  padding: 0;
+  text-decoration: none;
+  transition: none;
+  color: var(--fond-bleu);
+  font-size: 2.5rem;
+}
+#bandeau h1{
+  /* width: 22%; */
+  font-family: 'Oswald';
+  color: var(--fond-bleu);
+  font-size: 3rem;
+  text-transform: uppercase;
+  /* border-bottom: 5px solid; */
+  text-decoration: underline;
+}
 /* ===================Menu====================== */
 #menuprincipal #burger{
   text-align: right;
@@ -126,14 +143,13 @@ a {
   color: var(--fond-bleu);
   font-size: 2.5rem;
 }
+
 #bandeau #menuprincipal ul{
   display: flex;
   justify-content: flex-end;
   font-size: 2.2rem;
   text-transform: uppercase;
-}
-#bandeau #menuprincipal ul li{
-  margin-left: 5%;
+  padding-top: 15px;
 }
 #bandeau #menuprincipal ul li a{
   display: inline-block;
@@ -165,9 +181,11 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin-top: 20px; */
+    margin-bottom: 50px;
   }
-  
+.type h3{
+  text-transform: uppercase;
+}
 .reponse{
   width: 100%;;
 }
@@ -375,28 +393,33 @@ button[type="submit"]:hover{
  margin: 10px;
 }
 button[type="submit"] {
- 
-  background-color: var(--fond-bleu);
+  margin-top: 5px;
+  background-color: var(--fond-vert);
   color: #fff;
   padding: 8px 20px;
   border: none;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 /* =========================Accordéon======================== */
 
 .accordion {
   margin-top: 20px;
-  border: 1px solid var(--fond-bleu);
   border-radius: 5px;
   overflow: hidden;
 
 }
 
 .accordion-item {
-  border-top: 1px solid var(--fond-bleu);
+  border: 1px solid var(--fond-bleu);
+  border-radius: 5px;
+}
+.accordion-item.traitee{
+  border: 1px solid var(--fond-vert);
+  border-radius: 5px;
 }
 
 .accordion-header {
@@ -409,6 +432,10 @@ button[type="submit"] {
 
 .accordion-header.active {
   background-color: var(--fond-bleu);
+  color: var(--texte-blanc);
+}
+.accordion-header.active.traitee {
+  background-color: var(--fond-vert);
   color: var(--texte-blanc);
 }
 
@@ -424,11 +451,33 @@ button[type="submit"] {
   border-bottom: 0;
 }
 
+/* ===============================Footer=============================== */
 
+footer{
+  margin-top: 50px;
+  text-align: center;
+  color: var(--fond-bleu);
+}
+footer .mention li{
+  list-style-type: none;
+}
+footer .mention a{
+  color: var(--fond-bleu);
+  background-color: var(--fond-blanc);
+}
+footer .mention a:hover {
+  color: #fff;
+  background: linear-gradient(45deg,#069792,#17c2bb);
+  transition:none; 
+} 
 /* =======================Medias Querry================================ */
 
 @media screen and (max-width: 770px) {
-    #menuprincipal #burger{
+  
+  #bandeau h1 a{
+    font-size: 2rem;
+  }
+  #menuprincipal #burger{
       display: block;
   }
   #bandeau #menuprincipal ul{
@@ -436,7 +485,7 @@ button[type="submit"] {
       margin-bottom: 15px;
   }
   #bandeau #menuprincipal ul li{
-      line-height: 3,2rem;
+      line-height: 3.2rem;
   }
   #bandeau #menuprincipal ul li a{
       padding-bottom: 0;

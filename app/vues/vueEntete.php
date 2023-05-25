@@ -11,7 +11,7 @@
 <body>
         <header id="bandeau" class="container">
 
-                <h1>My medical</h1>
+                <h1><a href="index.php">My medical</a></h1>
                     <?php 
                         require_once RACINE . "/modele/bd.utilisateur.php";
                         
@@ -22,6 +22,7 @@
                         if(isset($res) && $res) {?>
                         <span class="apropos">
                          <a href="?action=logout">Déconnexion</a>
+                         <!-- <a href="?action=logout"><i class="fa-solid fa-xmark"></i></a> -->
                          </span>
                          <?php } else{?>
 
@@ -30,7 +31,7 @@
                                  <i class="fas fa-bars"></i>
                              </div>
                              <ul>
-                                <li><a href="index.php">Accueil</a></li>
+                                <!-- <li><a href="index.php">Accueil</a></li> -->
                                 <li><a href="index.php?action=home&type=patient">Patient</a></li>
                                 <li><a href="index.php?action=home&type=medecin">Medecin</a></li>
                                 <li><a href="index.php?action=home&type=gestionnaire">Gestionnaire</a></li>

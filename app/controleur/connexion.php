@@ -41,6 +41,7 @@
     // récupérer les informations de l'utilisateur correspondant à l'email fourni
     $user = $utilisateur->getUtilisateurByMailU($email);
 
+    $message;
 
     // si l'utilisateur est connecté, rediriger vers la page correspondante selon son rôle
     if ($formulaireOk && $aut->isLoggedOn() && isset($user["role"])){
@@ -70,9 +71,12 @@
 
         }else{
 
+            if($role!=$typeUser)
+                $message="Veuillez saisir les identifiants d'un  ".$typeUser;
+            else 
+                $message='Mail ou mot de passe incorrect';
             $aut->logout();
             $formulaireOk=false;
-            $titre = "authentification";
             require RACINE . "/vues/vueEntete.php";
             require RACINE . "/vues/vueConnexion.php";
             require RACINE . "/vues/vueFooter.php";
@@ -80,8 +84,8 @@
     }
     else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
         // appel du script de vue 
+        $message='Mail ou mot de passe incorect';
         $formulaireOk=false;
-        $titre = "authentification";
         require RACINE . "/vues/vueEntete.php";
         require RACINE . "/vues/vueConnexion.php";
         require RACINE . "/vues/vueFooter.php";
