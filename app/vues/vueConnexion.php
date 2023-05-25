@@ -5,8 +5,6 @@
             <span class="msg">
                 <?php
 
-                    if(isset($formulaireOk)){
-                    }
                     if(isset($message)){
                         echo($message);
                     }

@@ -11,7 +11,7 @@
         die('Erreur : '.basename(__FILE__));
     }
 
-    include_once  'login.php';
+    include_once  'authentification.php';
     include_once RACINE . "/modele/bd.ajoutSymptome.php";
     require_once RACINE . "/modele/bd.authentification.php";
     require_once RACINE . "/modele/bd.utilisateur.php";
@@ -55,7 +55,7 @@
 
         require RACINE . '/vues/vueEntete.php';
         require RACINE . '/vues/vueConnexion.php';
-        
+        require RACINE . "/vues/vueFooter.php";
     }
 
 ?>

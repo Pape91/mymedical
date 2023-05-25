@@ -1,5 +1,5 @@
     <main id="contenu" class="container">
-        <h2 class="profil">Profil Admin</h2>
+        <h2 class="profil">Vous agissez en tant que Gestionnaire</h2>
         <div class="corps_patient">
             <div class="donnees">
             <h2> Informations personnelles </h2>
@@ -10,7 +10,7 @@
                 <p> Numéro Professionnel : <?php echo $admin["numPro"]?></p>
             </div>
         <div class="historique">
-                <h2> Historique déclaration </h2>
+                <h2> Symptômes à rajouter </h2>
 
                 <?php if(isset($listDeclarations)){ 
                     
@@ -36,7 +36,7 @@
                                        <?php }?>
                                             </span>
 
-                                        <div class="autre_symptom">Autres symptomes déclarés :<span><?php echo $res['autres']?></span></div>
+                                        <div class="autre_symptom">Autres symptômes déclarés :<span><?php echo $res['autres']?></span></div>
 
                                     </form>
                                 </div>
@@ -48,18 +48,18 @@
                 
                 <?php } ?>
             </div>
+        </div>
         <form action=".?action=admin" method="POST">
-            <span>
+            <span class="symptome">
                 <?php
                         if(isset($message)){
                             echo($message);
                         }
                 ?>
             </span>
-        </div>
             
             <div class="declaration">
-                <h4>Ajouter de nouveaux symptômtes</h4>
+                <h4>Ajouter de nouveaux symptômes</h4>
                 <input type="text"  name="symptome" required/>
                 <button type="submit" >AJOUTER</button>
             </div>

@@ -10,7 +10,7 @@
         die('Erreur : '.basename(__FILE__));
     }
 
-    include_once RACINE .  '/controleur/login.php';
+    include_once RACINE .  '/controleur/authentification.php';
     
     require_once RACINE . "/modele/bd.authentification.php";
     require_once RACINE . "/modele/bd.declaration.php";

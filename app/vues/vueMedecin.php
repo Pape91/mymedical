@@ -1,6 +1,6 @@
 
     <main id="contenu" class="container">
-    <h2 class="profil"> Profil Medecin </h2>
+    <h2 class="profil"> Vous agissez en tant que Medecin </h2>
         <div class="corps_patient">
             <div class="donnees">
                 <h2> Informations personnelles </h2>

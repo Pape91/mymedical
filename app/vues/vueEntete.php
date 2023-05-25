@@ -41,10 +41,13 @@
                          <?php  }?>
 
             <div class="titre">
-                <p class="description">Le lorem ipsum est, en imprimerie, une suite 
-                    de mots sans signification utilisée à titre provisoire pour 
-                    calibrer une mise en page le texte définitif venant remplacer le faux-texte
-                    dès qu'il est prêt ou que la mise en page est achevée. Généralement utilise
-                    un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+                <p class="description">Cette application vise à offrir un avis médical sur 
+                    une pathologie aux utilisateurs tiers. Il permet aux patients de déclarer leurs symptômes
+                     et d'obtenir des indications sur la gravité de leur état ainsi que des conseils sur les 
+                     traitements possibles. Les utilisateurs peuvent s'inscrire en tant que patients ou médecins. 
+                     Les patients peuvent consulter l'historique de leurs déclarations précédentes, tandis que 
+                     les médecins peuvent accéder aux demandes d'avis en attente et fournir des diagnostics ou 
+                     des conseils médicaux. Ce site facilite ainsi l'accès aux avis médicaux, évitant aux patients 
+                     de se déplacer inutilement ou d'attendre un rendez-vous pour des problèmes de santé mineurs.</p>
             </div>
        </header>

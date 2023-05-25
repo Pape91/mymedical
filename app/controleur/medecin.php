@@ -16,7 +16,7 @@
     }
 
     // Inclusion du fichier contenant le formulaire de connexion
-    include_once RACINE . '/controleur/login.php';
+    include_once RACINE . '/controleur/authentification.php';
     
     // Inclusion des fichiers contenant les fonctions pour gérer l'authentification et la BD des utilisateurs
     require_once RACINE . "/modele/bd.authentification.php";
@@ -48,7 +48,7 @@
         // Si l'utilisateur n'est pas connecté, affichage de la page d'accueil
         require RACINE . '/vues/vueEntete.php';
         require RACINE . '/vues/vueConnexion.php';
-        require RACINE . '/vues/vueEntete.php';
+        require RACINE . '/vues/vueFooter.php';
     }
 
 ?>

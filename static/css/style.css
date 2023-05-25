@@ -77,7 +77,9 @@ ul{
   text-align: left;
   margin: 27px 0;
 }
-
+.apropos{
+  margin-top: 10px;
+}
 .apropos a{
   padding: 7px 9px 7px;
   border-radius: 5px;
@@ -316,7 +318,7 @@ button[type="submit"]:hover{
 }
 
 .declaration h4 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #413f3f;
   margin-top: 0;
   margin-bottom: 10px;
@@ -348,7 +350,7 @@ button[type="submit"]:hover{
 .message{
   text-align: center;
   font-size: 1.5rem;
-  color: #26e726;
+  color: var(--fond-vert);
   font-weight: bold;
 }
 .symtomes{
@@ -377,6 +379,10 @@ button[type="submit"]:hover{
 /* Style pour les boutons radio */
 #symptomes input[type="radio"] {
   margin-right: 5px;
+}
+.symptome{
+  font-size: 1.7rem;
+  color: var(--fond-vert);
 }
 
 /* Style pour les textarea contenant les autres symptômes */

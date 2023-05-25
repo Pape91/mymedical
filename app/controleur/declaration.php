@@ -13,7 +13,7 @@
     }
 
     // Inclure le fichier contenant les fonctions de connexion
-    include_once RACINE .  '/controleur/login.php';
+    include_once RACINE .  '/controleur/authentification.php';
 
     // Inclure les fichiers contenant les classes "Authentification" et "Declaration"
     require_once RACINE . "/modele/bd.authentification.php";

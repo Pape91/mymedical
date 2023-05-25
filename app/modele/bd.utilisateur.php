@@ -98,7 +98,7 @@ class Utilisateur extends DbConnector {
         try {
             $bdd = $this->dbConnect();
 
-            $mdpUCrypt = crypt($mdpU, "sel");
+            $mdpUCrypt = password_hash($mdpU, PASSWORD_DEFAULT);
             $req = $bdd->prepare("INSERT INTO utilisateur (email, mot_de_passe, role, prenom, nom, genre, date_de_naissance)
             values(:email,:mot_de_passe,:role,:prenom,:nom,:genre,:date_de_naissance)");
             $req->bindParam(':email', $email);

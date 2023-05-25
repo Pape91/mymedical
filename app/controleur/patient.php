@@ -15,7 +15,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 }
 
 // inclusion du fichier de login
-include_once RACINE . '/controleur/login.php';
+include_once RACINE . '/controleur/authentification.php';
 
 // inclusion des fichiers pour l'authentification et les fonctions de base de données pour les utilisateurs
 require_once RACINE . "/modele/bd.authentification.php";

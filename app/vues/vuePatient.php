@@ -1,6 +1,6 @@
 
     <main id="contenu" class="container">
-        <h2 class="profil"> Profil Patient </h2>
+        <h2 class="profil"> Vous agissez en tant que Patient</h2>
         <div class="corps_patient">
             <div class="donnees">
                 <h2> Informations personnelles </h2>
@@ -50,7 +50,7 @@
             </div>
         </div>
     <div class="declaration">
-        <h4>Déclarer mes symptômes</h4>
+        <h4>Faire une déclaration</h4>
         <a href=".?action=declaration">Déclarer</a>
     </div>  
     </main>
