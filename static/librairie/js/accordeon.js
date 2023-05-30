@@ -1,6 +1,6 @@
 
 // Récupérer tous les éléments avec la classe "accordion-header"
-var accordions = document.getElementsByClassName("accordion-header");
+let accordions = document.getElementsByClassName("accordion-header");
 
 if(accordions){
     // Parcourir tous les éléments récupérés

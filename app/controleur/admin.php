@@ -19,6 +19,7 @@
     // recuperation des donnees GET, POST, et SESSION
 
     $con = new \Mymedical\modele\Connexion();
+    $typeUser = 'gestionnaire';
     // appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
     if ($con->isLoggedOn()){
         $utilisateur = new \Mymedical\modele\Utilisateur();
@@ -46,13 +47,19 @@
     
             }
         }
-        
-        require RACINE . "/vues/vueEntete.php";
-        require RACINE . "/vues/vueAdmin.php";
-        require RACINE . "/vues/vueFooter.php";
+        if($_SESSION["role"]=='admin'){
+            require RACINE . "/vues/vueEntete.php";
+            require RACINE . "/vues/vueAdmin.php";
+            require RACINE . "/vues/vueFooter.php";
+        }
+        else {
+            $con->logout();
+            require RACINE . '/vues/vueEntete.php';
+            require RACINE . '/vues/vueConnexion.php';
+            require RACINE . "/vues/vueFooter.php";
+        }
         
     } else {
-
         require RACINE . '/vues/vueEntete.php';
         require RACINE . '/vues/vueConnexion.php';
         require RACINE . "/vues/vueFooter.php";

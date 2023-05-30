@@ -25,7 +25,7 @@
     // Récupération des données GET, POST et SESSION
 
     $con = new \Mymedical\modele\Connexion();
-
+    $typeUser = 'medecin';
     // Appel des fonctions pour récupérer les données utiles à l'affichage 
     if ($con->isLoggedOn()){
         // Récupération des informations de l'utilisateur connecté
@@ -39,11 +39,23 @@
         // Récupération des informations du médecin
         $medecin = $utilisateur->getMedecinByIdUser($user['Id_utilisateur']);
 
-        // Inclusion des fichiers de la vue pour l'entête, le contenu du profil et le pied de page
-        require RACINE . "/vues/vueEntete.php";
-        require RACINE . "/vues/vueMedecin.php";
-        require RACINE . "/vues/vueFooter.php";
-        
+
+        if($_SESSION["role"]=='medecin'){
+
+            // Inclusion des fichiers de la vue pour l'entête, le contenu du profil et le pied de page
+            require RACINE . "/vues/vueEntete.php";
+            require RACINE . "/vues/vueMedecin.php";
+            require RACINE . "/vues/vueFooter.php";
+        }
+        else{
+            $con->logout();
+             // Si l'utilisateur n'est pas connecté, affichage de la page d'accueil
+            require RACINE . '/vues/vueEntete.php';
+            require RACINE . '/vues/vueConnexion.php';
+            require RACINE . '/vues/vueFooter.php';
+
+        }
+   
     } else {
         // Si l'utilisateur n'est pas connecté, affichage de la page d'accueil
         require RACINE . '/vues/vueEntete.php';

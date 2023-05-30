@@ -17,7 +17,6 @@ function redirigeVers($action="defaut") {
     $lesActions["patient"] = "patient.php";
     $lesActions["ajoutSymptome"] = "ajoutSymptome.php";
     $lesActions["admin"] = "admin.php";
-    $lesActions["medecin"] = "medecin.php";
     $lesActions["declaration"] = "declaration.php";
     $lesActions["medecin"] = "medecin.php";
     $lesActions["detailsDeclarationPatient"] = "detailsDeclaration.php";

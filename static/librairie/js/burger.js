@@ -1,5 +1,5 @@
 // Sélection de l'icône du burger
-var burgerIcon = document.getElementById('burger');
+let burgerIcon = document.getElementById('burger');
 
 // Sélection du menu à dérouler
     let menu = document.querySelector('nav ul');

@@ -123,7 +123,7 @@ class Utilisateur extends DbConnector {
         try {
             $bdd = $this->dbConnect();
             
-            $mdpUCrypt = crypt($mdpU, "sel");
+            $mdpUCrypt = password_hash($mdpU, PASSWORD_DEFAULT);
             $req = $bdd->prepare("UPDATE utilisateur SET email=:email, mot_de_passe=:mot_de_passe, role=:role,
             prenom=:prenom, nom=:nom, genre=:genre, date_de_naissance=:date_de_naissance WHERE Id_utilisateur=:Id_utilisateur");
 

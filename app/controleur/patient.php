@@ -24,7 +24,7 @@ require_once RACINE . "/modele/bd.utilisateur.php";
 // récupération des données GET, POST, et SESSION
 // création d'un objet connexion pour gérer l'authentification
 $con = new \Mymedical\modele\Connexion();
-
+$typeUser = 'patient';
 // appel des fonctions permettant de récupérer les données utiles à l'affichage si l'utilisateur est connecté
 if ($con->isLoggedOn()){
     $utilisateur = new \Mymedical\modele\Utilisateur();
@@ -39,16 +39,26 @@ if ($con->isLoggedOn()){
     $user = $utilisateur->getUtilisateurByMailU($mailU);
     $listDeclarations = $utilisateur->getListDeclarationPatient($user['Id_utilisateur']);
     $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
-    // appel du script de vue qui permet de gérer l'affichage des données du patient
     
+    // appel du script de vue qui permet de gérer l'affichage des données du patient
+    if($_SESSION["role"]=='patient'){
     require RACINE . "/vues/vueEntete.php";
     require RACINE . "/vues/vuePatient.php";
     require RACINE . "/vues/vueFooter.php";
     
 } else {
+    $con->logout();
     // si l'utilisateur n'est pas connecté, on affiche seulement l'entête
     require RACINE . "/vues/vueEntete.php";
     require RACINE . '/vues/vueConnexion.php';
+    require RACINE . '/vues/vueFooter.php';
+
+}
+}else {
+    // Si l'utilisateur n'est pas connecté, affichage de la page d'accueil
+    require RACINE . '/vues/vueEntete.php';
+    require RACINE . '/vues/vueConnexion.php';
+    require RACINE . '/vues/vueFooter.php';
 }
 
 ?>

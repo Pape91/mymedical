@@ -28,9 +28,10 @@ class Connexion extends DbConnector {
         else{
             $mdpBD = $util["mot_de_passe"];
             // Si le mot de passe de l'utilisateur correspond à celui de la base de données, on le connecte
-            if (trim($mdpBD) == trim(crypt($mdpU, $mdpBD))) {
+            if (password_verify($mdpU, $mdpBD)) {
                 $_SESSION["email"] = $email;
                 $_SESSION["mot_de_passe"] = $mdpBD;
+                $_SESSION["role"] = $util['role'];
             }
             else return false;
         }         
@@ -43,8 +44,9 @@ class Connexion extends DbConnector {
         }
         unset($_SESSION["email"]);
         unset($_SESSION["mot_de_passe"]);
+        unset($_SESSION["role"]);
     }
-
+    
     // Cette fonction permet de récupérer l'email de l'utilisateur connecté
     function getMailULoggedOn(){
         $con = new \Mymedical\modele\Connexion();

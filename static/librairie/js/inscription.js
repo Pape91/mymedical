@@ -14,7 +14,7 @@
 
       eRole.addEventListener("change", function(event) {
         // Récupérer la valeur de l'élément "role"
-        var role = document.getElementById("role").value;
+        let role = document.getElementById("role").value;
   
         // Si la valeur de "role" est "patient", changer le texte de l'élément "libelle_role" en "numéro sécurité sociale"
         if (role === "patient") {

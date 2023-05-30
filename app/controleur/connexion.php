@@ -69,7 +69,8 @@
             header("Location: ".$hote."?action=medecin");           
             exit();
 
-        }else{
+        }
+        else{
 
             if($role!=$typeUser)
                 $message="Veuillez saisir les identifiants d'un  ".$typeUser;
