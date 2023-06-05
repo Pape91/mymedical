@@ -64,7 +64,7 @@ if (isset($_POST['email'])) {
             // créer une instance de la classe Admin
             $admin = new \Mymedical\modele\Admin();
             $retType=$admin->addAdmin($data_user["Id_utilisateur"], $num);
-            $typeUser="admin";
+            $typeUser="gestionnaire";
         }
 
         // Si l'ajout a été effectué avec succès

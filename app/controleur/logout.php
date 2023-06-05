@@ -24,6 +24,5 @@
     $uri = trim(strtok($dis_url, '?'));
     $hote =  'https://'.$_SERVER['SERVER_NAME'].$uri;
     header("Location: ".$hote);
-    exit();
 
 ?>

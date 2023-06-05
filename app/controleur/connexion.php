@@ -57,17 +57,16 @@
 
             $patient = $utilisateur->getPatientByIdUser($user['Id_utilisateur']);
             header("Location: ".$hote."?action=patient");
-            exit();
         }
+
         else if($role=="admin" && $typeUser=="gestionnaire"){
             $admin = $utilisateur->getAdminByIdUser($user['Id_utilisateur']);
-            header("Location: ".$hote."?action=admin");           
-             exit();
+            header("Location: ".$hote."?action=admin");   
+
         } else if($role=="medecin" && $typeUser=="medecin"){
 
             $medecin = $utilisateur->getMedecinByIdUser($user['Id_utilisateur']);
             header("Location: ".$hote."?action=medecin");           
-            exit();
 
         }
         else{

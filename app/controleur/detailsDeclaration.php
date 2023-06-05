@@ -1,6 +1,6 @@
 <?php
 
-    include_once RACINE . "/modele/bd.ajoutSymptome.php";
+    include_once RACINE . "/modele/bd.symptome.php";
 
     use \Mymedical\modele;
 

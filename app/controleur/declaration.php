@@ -1,7 +1,7 @@
 <?php
 
     // Inclure le fichier contenant la fonction permettant l'ajout d'un symptôme dans la base de données
-    include_once RACINE . "/modele/bd.ajoutSymptome.php";
+    include_once RACINE . "/modele/bd.symptome.php";
 
     // Utiliser le namespace "modele" de l'application
     use \Mymedical\modele;

@@ -1,7 +1,7 @@
 <?php
 
-    // Inclusion du fichier bd.ajoutSymptome.php
-    include_once RACINE . "/modele/bd.ajoutSymptome.php";
+    // Inclusion du fichier bd.symptome.php
+    include_once RACINE . "/modele/bd.symptome.php";
 
     use \Mymedical\modele;
 
@@ -33,7 +33,7 @@
         $idMedecin = $_GET['id_medecin'];
 
         // Récupération de la réponse à la déclaration passée en POST
-        $reponse = $_POST['reponse'];
+        $reponse = htmlspecialchars($_POST['reponse']);
 
         // Initialisation de la variable $estMedecin à false
         $estMedecin = false;
@@ -53,6 +53,5 @@
         $hote =  'https://'.$_SERVER['SERVER_NAME'].$uri;
 
         header("Location: ".$hote."?action=medecin");
-        exit();
    
 ?>

@@ -7,27 +7,24 @@
 
 function redirigeVers($action="defaut") {
 	if($action == "" )$action = "defaut";
-    $lesActions = array();
+        $lesActions = array();
 
-    // Tableau associatif des actions avec leur correspondance vers les fichiers
-    $lesActions["defaut"] = "home.php";
-    $lesActions["inscription"] = "inscription.php";
-    $lesActions["pre_inscription"] = "pre_inscription.php";
-    $lesActions["connexion"] = "connexion.php";
-    $lesActions["patient"] = "patient.php";
-    $lesActions["ajoutSymptome"] = "ajoutSymptome.php";
-    $lesActions["admin"] = "admin.php";
-    $lesActions["declaration"] = "declaration.php";
-    $lesActions["medecin"] = "medecin.php";
-    $lesActions["detailsDeclarationPatient"] = "detailsDeclaration.php";
-    $lesActions["reponseDeclaration"] = "reponseDeclaration.php";
-    $lesActions["logout"] = "logout.php";
-    $lesActions["home"] = "home.php";
-    $lesActions["mention"] = "mention.php";
-    $lesActions["rgpd"] = "rgpd.php";
-
-    
-    
+        // Tableau associatif des actions avec leur correspondance vers les fichiers
+        $lesActions["defaut"] = "home.php";
+        $lesActions["inscription"] = "inscription.php";
+        $lesActions["pre_inscription"] = "pre_inscription.php";
+        $lesActions["connexion"] = "connexion.php";
+        $lesActions["patient"] = "patient.php";
+        $lesActions["ajoutSymptome"] = "ajoutSymptome.php";
+        $lesActions["admin"] = "admin.php";
+        $lesActions["declaration"] = "declaration.php";
+        $lesActions["medecin"] = "medecin.php";
+        $lesActions["detailsDeclarationPatient"] = "detailsDeclaration.php";
+        $lesActions["reponseDeclaration"] = "reponseDeclaration.php";
+        $lesActions["logout"] = "logout.php";
+        $lesActions["home"] = "home.php";
+        $lesActions["mention"] = "mention.php";
+        $lesActions["rgpd"] = "rgpd.php";
 
     // Identifier l'action correspondante
 	$controler_id = $lesActions[$action];

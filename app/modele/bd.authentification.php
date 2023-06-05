@@ -91,7 +91,10 @@ class Connexion extends DbConnector {
                 }
             }
         }
-        catch(Exception $error){}
+        catch(Exception $error){
+            
+            echo "Une erreur s'est produite : " . $error->getMessage();
+        }
 
         return $ret;
     }

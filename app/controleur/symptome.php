@@ -4,8 +4,6 @@
     *	Controleur secondaire : monProfil
     */
 
-    
-
     use \mymedical\modele;
 
     if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {

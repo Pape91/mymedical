@@ -12,7 +12,7 @@
     }
 
     include_once  'authentification.php';
-    include_once RACINE . "/modele/bd.ajoutSymptome.php";
+    include_once RACINE . "/modele/bd.symptome.php";
     require_once RACINE . "/modele/bd.authentification.php";
     require_once RACINE . "/modele/bd.utilisateur.php";
 
