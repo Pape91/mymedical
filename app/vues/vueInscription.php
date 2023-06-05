@@ -29,6 +29,7 @@
             
             <label for="role">Rôle</label>
             <select id="role" name="role" required>
+              <option value="" disabled>Choisissez une option</option>
               <option value="patient" selected>Patient</option>
               <option value="medecin">Medecin</option>
               <option value="admin">Admin</option>

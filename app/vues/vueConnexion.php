@@ -12,7 +12,7 @@
                  
             </span>
             <h3>Se connecter en tant que</h3>
-            <span class="type"><h3> <?php echo($typeUser) ?></h3> </span>
+            <h3 class="type"><?php echo $typeUser ?></h3>
                 <form action="./?action=connexion&typeUser=<?php echo($typeUser) ?>" method="POST">  
                 <a href="./?action=pre_inscription">S'inscrire</a>    
                 <label for="email" >E-mail :</label>
